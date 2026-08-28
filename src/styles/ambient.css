@@ -1,0 +1,176 @@
+﻿/* Ambient field: slow, low-contrast motion keeps the dark canvas alive without competing with content. */
+body {
+  background-image:
+    radial-gradient(ellipse at 50% -20%, rgba(255, 255, 255, 0.045), transparent 48%),
+    radial-gradient(circle at 15% 18%, rgba(214, 255, 63, 0.055), transparent 22%),
+    radial-gradient(circle at 86% 62%, rgba(92, 145, 255, 0.045), transparent 25%);
+  background-size:
+    100% 100%,
+    125% 125%,
+    135% 135%;
+  animation: ambient-drift 18s ease-in-out infinite alternate;
+}
+body::before {
+  background:
+    radial-gradient(circle at 78% 6%, var(--glow-lime), transparent 24%),
+    radial-gradient(circle at 7% 45%, var(--glow-violet), transparent 23%),
+    radial-gradient(circle at 52% 92%, rgba(90, 150, 255, 0.035), transparent 20%);
+  animation: field-breathe 11s ease-in-out infinite alternate;
+}
+body::after {
+  opacity: 0.2;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+    linear-gradient(115deg, transparent 0 49.8%, rgba(214, 255, 63, 0.035) 50%, transparent 50.2%);
+  background-size:
+    72px 72px,
+    72px 72px,
+    280px 280px;
+  animation: grid-drift 24s linear infinite;
+}
+@keyframes ambient-drift {
+  0% {
+    background-position:
+      0 0,
+      0 0,
+      0 0;
+  }
+  100% {
+    background-position:
+      0 0,
+      8% -5%,
+      -6% 7%;
+  }
+}
+@keyframes field-breathe {
+  0% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+@keyframes grid-drift {
+  to {
+    background-position:
+      72px 72px,
+      72px 72px,
+      280px -280px;
+  }
+}
+.nav {
+  box-shadow:
+    0 1px 0 rgba(214, 255, 63, 0.04),
+    0 14px 35px rgba(0, 0, 0, 0.12);
+}
+.hero-art {
+  overflow: hidden;
+  isolation: isolate;
+}
+.hero-art::after {
+  z-index: 2;
+  text-shadow: 0 0 12px rgba(214, 255, 63, 0.5);
+}
+.hero-art .diagram {
+  animation: diagram-breathe 7s ease-in-out infinite alternate;
+}
+@keyframes diagram-breathe {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.78;
+  }
+  to {
+    transform: translate3d(0, -7px, 0) scale(1.015);
+    opacity: 1;
+  }
+}
+.section-head,
+.about,
+.faq {
+  transition: border-color 0.35s ease;
+}
+.section:hover .section-head,
+.about:hover,
+.faq:hover {
+  border-color: rgba(214, 255, 63, 0.38);
+}
+.event,
+.resource,
+.leader-row {
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+.event:hover {
+  transform: translateX(7px);
+  background: linear-gradient(90deg, rgba(214, 255, 63, 0.055), transparent 45%);
+}
+.resource:hover {
+  transform: translateY(-5px);
+  border-color: rgba(214, 255, 63, 0.4);
+}
+.leader-row:hover {
+  background: rgba(214, 255, 63, 0.08);
+  padding-left: 10px;
+}
+.join {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.join::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.3;
+  background: linear-gradient(
+    115deg,
+    transparent 0 35%,
+    rgba(214, 255, 63, 0.28) 50%,
+    transparent 65%
+  );
+  background-size: 220% 100%;
+  animation: join-sheen 9s ease-in-out infinite;
+}
+@keyframes join-sheen {
+  0%,
+  35% {
+    background-position: 200% 0;
+  }
+  70%,
+  100% {
+    background-position: -20% 0;
+  }
+}
+.button.primary {
+  box-shadow: 0 0 0 rgba(214, 255, 63, 0);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.button.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(214, 255, 63, 0.18);
+}
+@media (prefers-reduced-motion: reduce) {
+  body,
+  body::before,
+  body::after,
+  .hero-art .diagram,
+  .join::after {
+    animation: none;
+  }
+  .event:hover,
+  .resource:hover,
+  .button.primary:hover {
+    transform: none;
+  }
+  .leader-row:hover {
+    padding-left: 0;
+  }
+}

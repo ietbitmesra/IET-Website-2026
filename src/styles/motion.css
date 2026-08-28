@@ -1,0 +1,116 @@
+﻿/* Hybrid IET motion system */
+main {
+  animation: route-enter 0.62s cubic-bezier(0.2, 0.75, 0.25, 1) both;
+}
+@keyframes route-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.hero-art .diagram svg path {
+  stroke-dasharray: 620;
+  stroke-dashoffset: 620;
+  animation: draw-network 1.8s 0.25s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+@keyframes draw-network {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.hero-art .node {
+  opacity: 0;
+  animation: node-ping 0.45s forwards;
+}
+.hero-art .n1 {
+  animation-delay: 0.7s;
+}
+.hero-art .n2 {
+  animation-delay: 0.95s;
+}
+.hero-art .n3 {
+  animation-delay: 1.15s;
+}
+.hero-art .n4 {
+  animation-delay: 1.35s;
+}
+@keyframes node-ping {
+  from {
+    opacity: 0;
+    transform: scale(0.3) rotate(45deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(45deg);
+  }
+}
+.leader-row {
+  position: relative;
+  overflow: hidden;
+}
+.leader-row::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  width: var(--bar, 60%);
+  background: var(--lime);
+  opacity: 0.55;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: bar-grow 1s 0.35s ease forwards;
+}
+.leader-row:nth-child(3) {
+  --bar: 82%;
+}
+.leader-row:nth-child(4) {
+  --bar: 70%;
+}
+.leader-row:nth-child(5) {
+  --bar: 61%;
+}
+.leader-row:nth-child(6) {
+  --bar: 50%;
+}
+@keyframes bar-grow {
+  to {
+    transform: scaleX(1);
+  }
+}
+.ticker {
+  position: relative;
+}
+.ticker::before {
+  content: 'IET / SIGNAL';
+  position: absolute;
+  left: 5vw;
+  top: -9px;
+  background: #0e1215;
+  padding: 0 9px;
+  color: var(--lime);
+  font-size: 8px;
+  letter-spacing: 0.16em;
+  z-index: 2;
+}
+@media (prefers-reduced-motion: reduce) {
+  main {
+    animation: none;
+  }
+  .hero-art .diagram svg path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  .hero-art .node {
+    animation: none;
+    opacity: 1;
+  }
+  .leader-row::before {
+    animation: none;
+    transform: scaleX(1);
+  }
+}

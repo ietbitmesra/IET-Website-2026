@@ -1,0 +1,225 @@
+﻿/* Quiet depth: a soft light wash and hairline framing keep the technical mood tactile. */
+.hero {
+  position: relative;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  right: 4%;
+  top: 12%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(214, 255, 63, 0.07), transparent 66%);
+  filter: blur(10px);
+  pointer-events: none;
+  z-index: -1;
+}
+.activity::before {
+  content: '';
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--lime), transparent);
+  opacity: 0.3;
+  position: relative;
+  top: -1px;
+}
+.hero-art::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    260px circle at var(--mx, 50%) var(--my, 45%),
+    rgba(214, 255, 63, 0.13),
+    transparent 68%
+  );
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.hero-art:hover::before {
+  opacity: 1;
+}
+.page-hero {
+  min-height: 470px;
+  padding-top: 145px;
+  padding-bottom: 100px;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+.page-hero::after {
+  content: '';
+  position: absolute;
+  right: 10%;
+  top: 30%;
+  width: 140px;
+  height: 140px;
+  border: 1px solid rgba(214, 255, 63, 0.2);
+  transform: rotate(45deg);
+  opacity: 0.5;
+}
+.page-hero h1 {
+  font-size: clamp(48px, 7vw, 92px);
+  letter-spacing: -0.08em;
+  line-height: 1.02;
+  max-width: 800px;
+  margin: 24px 0;
+}
+.page-hero p {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.8;
+  max-width: 490px;
+}
+.page-body {
+  padding-top: 90px;
+  padding-bottom: 150px;
+}
+.page-rule {
+  height: 1px;
+  background: var(--line);
+  margin-bottom: 28px;
+}
+.page-body h2 {
+  font-size: clamp(38px, 5vw, 64px);
+  line-height: 1.02;
+  letter-spacing: -0.07em;
+  margin: 18px 0 24px;
+}
+.page-body p {
+  max-width: 470px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+.mobile-back {
+  display: none;
+}
+.reveal-title {
+  animation: title-reveal 0.8s cubic-bezier(0.2, 0.75, 0.25, 1) both;
+}
+.reveal-title em {
+  display: inline-block;
+  animation: title-accent 0.8s 0.14s cubic-bezier(0.2, 0.75, 0.25, 1) both;
+}
+@keyframes title-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+    clip-path: inset(0 0 100%);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    clip-path: inset(0);
+  }
+}
+@keyframes title-accent {
+  from {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+.interactive-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.interactive-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    190px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(214, 255, 63, 0.1),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.22s;
+}
+.interactive-card:hover::before {
+  opacity: 1;
+}
+.interactive-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+  pointer-events: none;
+  transition: border-color 0.22s;
+}
+.interactive-card:hover::after {
+  border-color: rgba(214, 255, 63, 0.35);
+}
+.interactive-card > * {
+  position: relative;
+  z-index: 1;
+}
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.65s ease,
+    transform 0.65s cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+.reveal-on-scroll:nth-child(2) {
+  transition-delay: 0.07s;
+}
+.reveal-on-scroll:nth-child(3) {
+  transition-delay: 0.14s;
+}
+.reveal-on-scroll:nth-child(4) {
+  transition-delay: 0.21s;
+}
+.reveal-on-scroll:focus-within,
+.reveal-on-scroll:hover,
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-title,
+  .reveal-title em {
+    animation: none;
+  }
+  .reveal-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .hero-art::before,
+  .interactive-card::before {
+    display: none;
+  }
+}
+@media (max-width: 760px) {
+  .page-hero {
+    min-height: 390px;
+    padding-top: 95px;
+    padding-bottom: 70px;
+  }
+  .page-hero h1 {
+    font-size: 50px;
+  }
+  .page-hero::after {
+    right: 12%;
+    top: 35%;
+    width: 90px;
+    height: 90px;
+  }
+  .page-body {
+    padding-top: 65px;
+    padding-bottom: 95px;
+  }
+  .mobile-back {
+    display: block;
+    font: 10px 'DM Mono';
+    color: var(--muted);
+  }
+}
