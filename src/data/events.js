@@ -37,8 +37,23 @@ export const pastEvents = [
     title: 'C++ Workshop',
     type: 'Workshop',
     detail: '16–18 JAN 2026 · ROOMS 214, 219, 220',
+    durationDays: '3',
+    durationLabel: 'DAYS DURATION',
+    track: 'C / C++',
+    trackLabel: 'PROGRAMMING',
+    level: 'BEGINNER',
+    levelSub: 'FOCUSED',
+    dates: '16–18 JAN 2026',
+    venue: 'ROOMS 214, 219, 220',
+    description1:
+      'This is a three day workshop organized by IET every year and has been one of the major workshops conducted by the club. As C++ provides an introduction to programming, the workshop attracts first year students in large numbers. The topics are covered in brief and taught with the help of PowerPoint presentations and practical examples by senior students of the club. The learners can clarify their doubts by asking their queries to the student volunteers of IET.',
+    description2:
+      'Some of the topics covered include operators, loops, arrays and pointers. The workshop is designed to give beginners a strong foundation in C++ programming and help them understand the fundamentals of programming in a practical and approachable way.',
+    topics: ['Operators', 'Loops', 'Arrays', 'Pointers'],
     image: '/events/cpp-workshop.jpg',
     theme: 'cpp',
+    summary:
+      'An annual flagship three-day workshop introducing first-year students to C++ fundamentals, syntax, control structures, and pointers with hands-on peer mentoring.',
   },
   {
     title: 'SWE Quest',
