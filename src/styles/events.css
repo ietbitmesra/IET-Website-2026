@@ -228,9 +228,15 @@
 .event-detail-card:nth-child(5) { animation-delay: 0.38s; }
 .event-detail-card:nth-child(6) { animation-delay: 0.46s; }
 
-/* Interactive Hover Animation */
+/* Interactive Hover & Keyboard Focus Animation */
 .event-detail-card:hover {
   transform: translateY(-12px) scale(1.03);
+}
+
+.event-detail-card:focus-visible {
+  outline: 2px solid #c084fc;
+  outline-offset: 4px;
+  transform: translateY(-8px) scale(1.02);
 }
 
 .event-detail-card:hover .poster-art {
@@ -1352,23 +1358,32 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-
-  .event-modal,
-  .event-card:hover {
-    transform: none;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 
-  .event-details-group::before {
-    animation: none;
-  }
-
-  .event-details-group:first-child::after {
-    animation: none;
-  }
-
+  .event-details-heading h2,
+  .event-details-heading h2 em,
+  .event-details-group::before,
+  .workshop-feature-group::before,
   .events-hero-logo,
   .events-hero-logo::before,
   .events-hero-logo img {
-    animation: none;
+    animation: none !important;
+  }
+
+  .event-detail-card:hover,
+  .event-detail-card:focus-visible,
+  .event-detail-card:hover .poster-art img {
+    transform: none !important;
+  }
+
+  .event-detail-card::after {
+    display: none !important;
   }
 }

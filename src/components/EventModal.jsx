@@ -1,16 +1,46 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 function EventModal({ event, onClose }) {
+  const closeBtnRef = useRef(null);
+
   useEffect(() => {
     if (!event) return undefined;
-    const onKeyDown = (e) => {
-      if (e.key === 'Escape') onClose();
-    };
+
+    const previousOverflow = document.body.style.overflow;
+    const previousPaddingRight = document.body.style.paddingRight;
+    const previouslyFocusedElement = document.activeElement;
+
+    // Prevent layout shift from disappearing scrollbar
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+    }
     document.body.style.overflow = 'hidden';
+
+    // Focus the modal close button for keyboard / screen-reader accessibility
+    setTimeout(() => {
+      if (closeBtnRef.current) {
+        closeBtnRef.current.focus();
+      }
+    }, 50);
+
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        onClose();
+      }
+    };
     document.addEventListener('keydown', onKeyDown);
+
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = previousOverflow;
+      document.body.style.paddingRight = previousPaddingRight;
       document.removeEventListener('keydown', onKeyDown);
+
+      // Restore focus to the element that triggered the modal
+      if (previouslyFocusedElement && typeof previouslyFocusedElement.focus === 'function') {
+        previouslyFocusedElement.focus();
+      }
     };
   }, [event, onClose]);
 
@@ -25,7 +55,13 @@ function EventModal({ event, onClose }) {
         aria-labelledby="event-dialog-title"
         onMouseDown={(e) => e.stopPropagation()}
       >
-        <button className="modal-close" type="button" onClick={onClose} aria-label="Close event details">
+        <button
+          ref={closeBtnRef}
+          className="modal-close"
+          type="button"
+          onClick={onClose}
+          aria-label="Close event details"
+        >
           <span aria-hidden="true">×</span>
         </button>
         <div className="dialog-index">IET / EVENT FILE / {event.day || 'ARCHIVE'}</div>

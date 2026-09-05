@@ -34,7 +34,17 @@ function PastEvents({ splitWorkshops = false, onLearnMore }) {
           <article
             className="event-detail-card interactive-card reveal-on-scroll"
             key={event.title}
+            role="button"
+            tabIndex={0}
+            aria-haspopup="dialog"
+            aria-label={`View details for ${event.title}`}
             onClick={() => onLearnMore && onLearnMore(event)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                onLearnMore && onLearnMore(event);
+              }
+            }}
           >
             {renderPoster(event, index)}
             <div className="event-detail-copy">
