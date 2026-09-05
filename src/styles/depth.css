@@ -80,7 +80,7 @@
   width: 54%;
   max-width: 720px;
   height: 92%;
-  pointer-events: none;
+  pointer-events: auto;
   z-index: 1;
   display: flex;
   align-items: center;
@@ -114,19 +114,27 @@
   max-width: 620px;
 }
 .page-body {
-  padding-top: 70px;
-  padding-bottom: 150px;
+  padding-top: 60px;
+  padding-bottom: 40px;
 }
 .page-body-about {
   position: relative;
   overflow: hidden;
+  padding-bottom: 30px;
+}
+.standalone-footer {
+  border-top: none;
+  padding-top: 0;
+}
+.standalone-footer .footer-bottom {
+  border-top: 1px solid var(--line);
 }
 .about-initiatives-section {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  min-height: 460px;
+  min-height: 400px;
 }
 .about-initiatives-art {
   position: absolute;
@@ -136,11 +144,36 @@
   width: 52%;
   max-width: 660px;
   height: 94%;
-  pointer-events: none;
+  pointer-events: auto;
   z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.interactive-art {
+  pointer-events: auto;
+  overflow: hidden;
+}
+.interactive-art img {
+  position: relative;
+  z-index: 1;
+}
+.interactive-art::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    280px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(139, 92, 246, 0.10),
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 3;
+}
+.interactive-art:hover::before {
+  opacity: 1;
 }
 .about-initiatives-art img {
   width: 100%;
@@ -316,8 +349,8 @@
     height: 90px;
   }
   .page-body {
-    padding-top: 65px;
-    padding-bottom: 95px;
+    padding-top: 50px;
+    padding-bottom: 40px;
   }
   .mobile-back {
     display: block;

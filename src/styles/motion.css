@@ -97,6 +97,72 @@ main {
   letter-spacing: 0.16em;
   z-index: 2;
 }
+
+/* Standalone About page graphic animations */
+.page-hero-art img {
+  animation:
+    art-fade-in 1s cubic-bezier(0.16, 1, 0.3, 1) both,
+    float-hands 7s ease-in-out 0.8s infinite alternate;
+  will-change: transform, opacity;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.6s;
+}
+
+.about-initiatives-art img {
+  animation:
+    art-fade-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) both,
+    float-tiles 8s ease-in-out 1s infinite alternate;
+  will-change: transform, opacity;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.6s;
+}
+
+.page-hero-about:hover .page-hero-art img {
+  opacity: 1;
+}
+
+.about-initiatives-section:hover .about-initiatives-art img {
+  opacity: 1;
+}
+
+@keyframes art-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(14px);
+  }
+  to {
+    opacity: 0.94;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes float-hands {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.91;
+  }
+  50% {
+    transform: translateY(-10px) rotate(0.35deg);
+    opacity: 0.98;
+  }
+  100% {
+    transform: translateY(6px) rotate(-0.25deg);
+    opacity: 0.91;
+  }
+}
+
+@keyframes float-tiles {
+  0% {
+    transform: translateY(-8px) translateX(0px);
+    opacity: 0.92;
+  }
+  50% {
+    transform: translateY(8px) translateX(-5px);
+    opacity: 0.98;
+  }
+  100% {
+    transform: translateY(-8px) translateX(0px);
+    opacity: 0.92;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   main {
     animation: none;
@@ -118,6 +184,12 @@ main {
   nav a::after,
   .nav-cta,
   .nav-cta .arrow {
+    transition: none !important;
+  }
+  .page-hero-art img,
+  .about-initiatives-art img {
+    animation: none !important;
+    transform: none !important;
     transition: none !important;
   }
 }

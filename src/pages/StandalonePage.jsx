@@ -5,6 +5,12 @@ import { pageContent } from '../data/pages';
 function StandalonePage({ path }) {
   const [label, title, desc] = pageContent[path] || pageContent['/about'];
 
+  const handleSpotlight = (e) => {
+    const r = e.currentTarget.getBoundingClientRect();
+    e.currentTarget.style.setProperty('--mx', `${e.clientX - r.left}px`);
+    e.currentTarget.style.setProperty('--my', `${e.clientY - r.top}px`);
+  };
+
   return (
     <>
       <header className="nav">
@@ -49,7 +55,11 @@ function StandalonePage({ path }) {
             <p>{desc}</p>
           </div>
           {path === '/about' && (
-            <div className="page-hero-art" aria-hidden="true">
+            <div
+              className="page-hero-art interactive-art"
+              onMouseMove={handleSpotlight}
+              aria-label="IET Hands Graphic"
+            >
               <img src="/about-hands.png" alt="IET Connection" />
             </div>
           )}
@@ -57,7 +67,11 @@ function StandalonePage({ path }) {
         <section className={`page-body container ${path === '/about' ? 'page-body-about' : ''}`}>
           {path === '/about' ? (
             <div className="about-initiatives-section">
-              <div className="about-initiatives-art" aria-hidden="true">
+              <div
+                className="about-initiatives-art interactive-art"
+                onMouseMove={handleSpotlight}
+                aria-label="IET Chapter Initiatives"
+              >
                 <img src="/about-initiatives.png" alt="IET Chapter Initiatives" />
               </div>
               <div className="about-right-wrapper">
@@ -109,7 +123,7 @@ function StandalonePage({ path }) {
           )}
         </section>
       </main>
-      <footer>
+      <footer className="standalone-footer">
         <div className="container footer-bottom">
           <span>© 2026 IET Club</span>
           <span>
