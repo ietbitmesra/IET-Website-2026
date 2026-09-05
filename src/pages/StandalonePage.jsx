@@ -39,20 +39,53 @@ function StandalonePage({ path }) {
         </section>
         <section className="page-body container">
           <div className="page-rule"></div>
-          <span className="kicker">STATIC FRONTEND PREVIEW</span>
-          <h2>
-            Built for the next
-            <br />
-            <em>chapter.</em>
-          </h2>
-          <p>
-            Content for this route is ready to connect to the IET API in a later phase. For now,
-            this presentation layer keeps the hierarchy, interaction and responsive behavior in
-            place.
-          </p>
-          <a className="button outline" href="/">
-            Back to home <Arrow />
-          </a>
+          {path === '/about' ? (
+            <>
+              <span className="kicker">CHAPTER INITIATIVES</span>
+              <h2>
+                What we <em>do??</em>
+              </h2>
+              <p>
+                At the IET BIT Mesra Student Chapter, we build practical problem-solving and
+                technical proficiency through focused C++ workshops and dynamic campus competitions.
+                From high-pressure programming challenges like <strong>Rewind Recode</strong> and{' '}
+                <strong>Blind Coding</strong> to collaborative problem-solving in{' '}
+                <strong>Split Solve</strong> and end-to-end interview simulations with{' '}
+                <strong>SWE Quest</strong>, we provide platforms that test logic under real-world
+                constraints.
+              </p>
+              <p>
+                Our core mission is bridging the gap between foundational data structures and
+                competitive execution, empowering students to sharpen their algorithmic skills and
+                excel in software engineering.
+              </p>
+              <div style={{ display: 'flex', gap: '14px', marginTop: '30px', flexWrap: 'wrap' }}>
+                <a className="button primary" href="/events">
+                  Explore Events <Arrow />
+                </a>
+                <a className="button outline" href="/">
+                  Back to home <Arrow />
+                </a>
+              </div>
+            </>
+          ) : (
+            <>
+              <span className="kicker">STATIC FRONTEND PREVIEW</span>
+              <h2>
+                Built for the next
+                <br />
+                <em>chapter.</em>
+              </h2>
+              <p>
+                Content for this route is ready to connect to the IET API in a later phase. For now,
+                this presentation layer keeps the hierarchy, interaction and responsive behavior in
+                place.
+              </p>
+              <a className="button outline" href="/">
+                Back to home <Arrow />
+              </a>
+            </>
+          )}
         </section>
       </main>
       <footer>

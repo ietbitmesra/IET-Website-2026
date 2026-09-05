@@ -1,4 +1,4 @@
-﻿/* Quiet depth: a soft light wash and hairline framing keep the technical mood tactile. */
+/* Quiet depth: a soft light wash and hairline framing keep the technical mood tactile. */
 .hero {
   position: relative;
 }
@@ -69,7 +69,7 @@
   color: var(--muted);
   font-size: 16px;
   line-height: 1.8;
-  max-width: 490px;
+  max-width: 620px;
 }
 .page-body {
   padding-top: 90px;
@@ -87,11 +87,14 @@
   margin: 18px 0 24px;
 }
 .page-body p {
-  max-width: 470px;
+  max-width: 620px;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.8;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+}
+.page-body p strong {
+  color: var(--paper, #e9ebe4);
 }
 .mobile-back {
   display: none;

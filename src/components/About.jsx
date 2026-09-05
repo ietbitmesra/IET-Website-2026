@@ -13,18 +13,19 @@ function About() {
         </span>
       </div>
       <div className="about-copy">
-        <span className="kicker">05 / WHY IET</span>
-        <h2>
-          We build people
+        <span className="kicker">05 / ABOUT THE IET</span>
+        <h2 className="reveal-title">
+          Working together to
           <br />
-          who <em>build things.</em>
+          <em>engineer a better world.</em>
         </h2>
         <p>
-          IET is a student-led engineering community that turns curiosity into consistent
-          practice. Through code, conversations and collaboration, we make space for technical
-          excellence to grow.
+          We are the IET and we inspire, inform and influence the global engineering community to
+          engineer a better world. As a diverse home across engineering and technology, we share
+          knowledge that helps make better sense of the world in order to solve the challenges that
+          matter. It’s why we are uniquely placed to champion engineering.
         </p>
-        <a className="button outline" href="#about">
+        <a className="button outline" href="/about">
           Our story <Arrow />
         </a>
       </div>

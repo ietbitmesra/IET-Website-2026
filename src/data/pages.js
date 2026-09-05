@@ -1,8 +1,8 @@
 export const pageContent = {
   '/about': [
-    'ABOUT IET',
-    'We build people who build things.',
-    'IET is a student-led engineering community where students learn through building, competing and collaborating. Explore our story, mission and values.',
+    'ABOUT THE IET',
+    'Working together to engineer a better world.',
+    'We are the IET and we inspire, inform and influence the global engineering community to engineer a better world. As a diverse home across engineering and technology, we share knowledge that helps make better sense of the world in order to solve the challenges that matter. It’s why we are uniquely placed to champion engineering.',
   ],
   '/events': [
     'EVENTS',
