@@ -32,10 +32,17 @@ function StandalonePage({ path }) {
         </div>
       </header>
       <main>
-        <section className="page-hero container">
-          <span className="kicker">IET / {label}</span>
-          <h1>{title}</h1>
-          <p>{desc}</p>
+        <section className={`page-hero container ${path === '/about' ? 'page-hero-about' : ''}`}>
+          <div className="page-hero-content">
+            <span className="kicker">IET / {label}</span>
+            <h1>{title}</h1>
+            <p>{desc}</p>
+          </div>
+          {path === '/about' && (
+            <div className="page-hero-art" aria-hidden="true">
+              <img src="/about-hands.png" alt="IET Connection" />
+            </div>
+          )}
         </section>
         <section className="page-body container">
           {path === '/about' ? (
