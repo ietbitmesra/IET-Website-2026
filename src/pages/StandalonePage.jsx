@@ -35,7 +35,17 @@ function StandalonePage({ path }) {
         <section className={`page-hero container ${path === '/about' ? 'page-hero-about' : ''}`}>
           <div className="page-hero-content">
             <span className="kicker">IET / {label}</span>
-            <h1>{title}</h1>
+            {path === '/about' ? (
+              <h1>
+                Working together to
+                <br />
+                engineer a better
+                <br />
+                <em>world.</em>
+              </h1>
+            ) : (
+              <h1>{title}</h1>
+            )}
             <p>{desc}</p>
           </div>
           {path === '/about' && (
@@ -44,9 +54,13 @@ function StandalonePage({ path }) {
             </div>
           )}
         </section>
-        <section className="page-body container">
+        <section className={`page-body container ${path === '/about' ? 'page-body-about' : ''}`}>
           {path === '/about' ? (
-            <>
+            <div className="about-initiatives-section">
+              <div className="about-initiatives-art" aria-hidden="true">
+                <img src="/about-initiatives.png" alt="IET Chapter Initiatives" />
+              </div>
+              <div className="about-right-wrapper">
               <span className="kicker">CHAPTER INITIATIVES</span>
               <h2>
                 What we <em>do??</em>
@@ -65,7 +79,7 @@ function StandalonePage({ path }) {
                 competitive execution, empowering students to sharpen their algorithmic skills and
                 excel in software engineering.
               </p>
-              <div style={{ display: 'flex', gap: '14px', marginTop: '30px', flexWrap: 'wrap' }}>
+              <div className="page-body-actions">
                 <a className="button primary" href="/events">
                   Explore Events <Arrow />
                 </a>
@@ -73,7 +87,8 @@ function StandalonePage({ path }) {
                   Back to home <Arrow />
                 </a>
               </div>
-            </>
+            </div>
+            </div>
           ) : (
             <>
               <span className="kicker">STATIC FRONTEND PREVIEW</span>
