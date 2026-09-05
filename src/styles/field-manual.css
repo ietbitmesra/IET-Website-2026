@@ -1,4 +1,4 @@
-﻿/* Final art direction: IET Field Manual â€” a sharper, authored composition. */
+/* Final art direction: IET Field Manual â€” a sharper, authored composition. */
 :root {
   --paper: #e9ebe4;
   --ink: #101416;
@@ -9,9 +9,11 @@ body {
   font-family: Manrope, Arial, sans-serif;
 }
 .nav {
-  height: 92px;
-  background: #080a0c;
-  border-bottom: 1px solid #30363a;
+  height: 64px;
+  background: rgba(8, 10, 12, 0.72);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 .nav-inner {
   max-width: none;
@@ -19,12 +21,13 @@ body {
 }
 .nav-inner::after {
   left: 5vw;
-  bottom: -21px;
+  bottom: -18px;
   color: #596166;
 }
 .logo img {
-  width: 126px;
-  height: 50px;
+  width: auto;
+  height: 36px;
+  max-width: 108px;
   mix-blend-mode: screen;
 }
 .nav-cta {
@@ -32,17 +35,106 @@ body {
   background: var(--lime);
   color: #0b0d0f;
   font-weight: 800;
+  padding: 8px 14px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition:
+    transform 0.25s cubic-bezier(0.2, 0.75, 0.25, 1),
+    box-shadow 0.25s cubic-bezier(0.2, 0.75, 0.25, 1),
+    background-color 0.25s cubic-bezier(0.2, 0.75, 0.25, 1),
+    border-color 0.25s cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+.nav-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 16px rgba(214, 255, 63, 0.4);
+}
+.nav-cta .arrow {
+  transition: transform 0.25s cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+.nav-cta:hover .arrow {
+  transform: translate(2px, -2px);
 }
 nav {
-  gap: 34px;
+  gap: 12px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-size: 10px;
 }
+nav a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 12px;
+  border-radius: 6px;
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 600;
+  transition:
+    color 0.25s cubic-bezier(0.2, 0.75, 0.25, 1),
+    transform 0.25s cubic-bezier(0.2, 0.75, 0.25, 1),
+    text-shadow 0.25s cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+nav a:not(.nav-cta)::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  background: radial-gradient(circle at 50% 120%, rgba(214, 255, 63, 0.12), transparent 70%), rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(214, 255, 63, 0.18);
+  opacity: 0;
+  transform: scale(0.92);
+  transition:
+    opacity 0.25s cubic-bezier(0.2, 0.75, 0.25, 1),
+    transform 0.25s cubic-bezier(0.2, 0.75, 0.25, 1);
+  pointer-events: none;
+}
+nav a:not(.nav-cta)::after {
+  content: '';
+  position: absolute;
+  bottom: 1px;
+  left: 18%;
+  right: 18%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--lime), transparent);
+  border-radius: 99px;
+  opacity: 0;
+  transform: scaleX(0.2);
+  box-shadow: 0 0 8px var(--lime);
+  transition:
+    opacity 0.25s cubic-bezier(0.2, 0.75, 0.25, 1),
+    transform 0.3s cubic-bezier(0.2, 0.75, 0.25, 1);
+  pointer-events: none;
+}
+nav a:not(.nav-cta):hover {
+  color: var(--paper, #f0f3f6);
+  transform: translateY(-1px);
+  text-shadow: 0 0 10px rgba(214, 255, 63, 0.5);
+}
+nav a:not(.nav-cta):hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+nav a:not(.nav-cta):hover::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+nav a:not(.nav-cta):active {
+  transform: translateY(0) scale(0.97);
+}
+nav a.active:not(.nav-cta) {
+  color: var(--lime);
+}
+nav a.active:not(.nav-cta)::after {
+  opacity: 1;
+  transform: scaleX(0.8);
+}
 .hero {
   max-width: none;
   padding: 0 5vw;
-  min-height: calc(100vh - 92px);
+  min-height: calc(100vh - 64px);
   grid-template-columns: 57% 43%;
   gap: 0;
   align-items: stretch;
@@ -297,17 +389,25 @@ footer {
 }
 @media (max-width: 760px) {
   .nav {
-    height: 76px;
+    height: 56px;
   }
   .nav-inner {
     padding: 0 20px;
   }
   .nav-inner::after {
     left: 20px;
+    bottom: -16px;
   }
   .logo img {
-    width: 106px;
-    height: 42px;
+    width: auto;
+    height: 30px;
+    max-width: 90px;
+  }
+  nav {
+    top: 56px;
+    background: rgba(8, 10, 12, 0.94);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
   }
   .hero {
     display: block;

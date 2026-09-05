@@ -1,4 +1,4 @@
-﻿/* Ambient field: slow, low-contrast motion keeps the dark canvas alive without competing with content. */
+/* Ambient field: slow, low-contrast motion keeps the dark canvas alive without competing with content. */
 body {
   background-image:
     radial-gradient(ellipse at 50% -20%, rgba(255, 255, 255, 0.045), transparent 48%),
@@ -63,8 +63,9 @@ body::after {
 }
 .nav {
   box-shadow:
-    0 1px 0 rgba(214, 255, 63, 0.04),
-    0 14px 35px rgba(0, 0, 0, 0.12);
+    0 1px 0 rgba(214, 255, 63, 0.05),
+    0 12px 32px rgba(0, 0, 0, 0.28),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.04);
 }
 .hero-art {
   overflow: hidden;
