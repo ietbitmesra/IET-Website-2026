@@ -72,13 +72,8 @@
   max-width: 620px;
 }
 .page-body {
-  padding-top: 90px;
+  padding-top: 70px;
   padding-bottom: 150px;
-}
-.page-rule {
-  height: 1px;
-  background: var(--line);
-  margin-bottom: 28px;
 }
 .page-body h2 {
   font-size: clamp(38px, 5vw, 64px);

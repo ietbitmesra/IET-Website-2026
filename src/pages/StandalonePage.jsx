@@ -38,7 +38,6 @@ function StandalonePage({ path }) {
           <p>{desc}</p>
         </section>
         <section className="page-body container">
-          <div className="page-rule"></div>
           {path === '/about' ? (
             <>
               <span className="kicker">CHAPTER INITIATIVES</span>
