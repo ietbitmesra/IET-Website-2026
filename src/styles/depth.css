@@ -91,7 +91,8 @@
   height: 100%;
   object-fit: contain;
   mix-blend-mode: screen;
-  opacity: 0.92;
+  opacity: 1;
+  filter: brightness(1.25);
   border: none;
   outline: none;
 }
@@ -165,7 +166,7 @@
   pointer-events: none;
   background: radial-gradient(
     280px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(139, 92, 246, 0.10),
+    rgba(139, 92, 246, 0.1),
     transparent 65%
   );
   opacity: 0;
@@ -180,7 +181,8 @@
   height: 100%;
   object-fit: contain;
   mix-blend-mode: screen;
-  opacity: 0.94;
+  opacity: 1;
+  filter: brightness(1.25);
   border: none;
   outline: none;
 }
@@ -231,7 +233,9 @@
   background: rgba(139, 92, 246, 0.08);
 }
 .page-body-actions .button.outline .arrow {
-  transition: transform 0.3s ease, color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
   display: inline-block;
 }
 .page-body-actions .button.outline:hover .arrow {
@@ -421,4 +425,3 @@
     opacity: 0.88;
   }
 }
-

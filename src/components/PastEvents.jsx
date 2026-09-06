@@ -156,7 +156,9 @@ function PastEvents({ splitWorkshops = false, onLearnMore }) {
             <div className="workshop-stat-card">
               <div className="workshop-stat-item">
                 <span className="workshop-stat-number">{workshop.durationDays || '3'}</span>
-                <span className="workshop-stat-label">{workshop.durationLabel || 'DAYS DURATION'}</span>
+                <span className="workshop-stat-label">
+                  {workshop.durationLabel || 'DAYS DURATION'}
+                </span>
               </div>
 
               <div className="workshop-stat-separator" />
@@ -170,14 +172,18 @@ function PastEvents({ splitWorkshops = false, onLearnMore }) {
 
               <div className="workshop-stat-item">
                 <span className="workshop-stat-highlight">{workshop.level || 'BEGINNER'}</span>
-                <span className="workshop-stat-highlight sub-highlight">{workshop.levelSub || 'FOCUSED'}</span>
+                <span className="workshop-stat-highlight sub-highlight">
+                  {workshop.levelSub || 'FOCUSED'}
+                </span>
               </div>
 
               <div className="workshop-stat-separator" />
 
               <div className="workshop-stat-item workshop-meta-item">
                 <span className="workshop-meta-date">{workshop.dates || '16–18 JAN 2026'}</span>
-                <span className="workshop-meta-venue">{workshop.venue || 'ROOMS 214, 219, 220'}</span>
+                <span className="workshop-meta-venue">
+                  {workshop.venue || 'ROOMS 214, 219, 220'}
+                </span>
               </div>
             </div>
           </aside>
@@ -198,9 +204,7 @@ function PastEvents({ splitWorkshops = false, onLearnMore }) {
     );
   }
 
-  return (
-    renderArchive(pastEvents, 'PAST EVENTS', ["What we've", 'already built.'], '05')
-  );
+  return renderArchive(pastEvents, 'PAST EVENTS', ["What we've", 'already built.'], '05');
 }
 
 export default PastEvents;

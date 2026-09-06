@@ -11,8 +11,8 @@ function JoinCTA() {
           <em>with us?</em>
         </h2>
         <p>
-          Whether you're into CP, development, systems, AI or simply want to build, there's a
-          place for you here.
+          Whether you're into CP, development, systems, AI or simply want to build, there's a place
+          for you here.
         </p>
         <a className="button primary" href="mailto:hello@ietclub.in">
           Apply to IET <Arrow />

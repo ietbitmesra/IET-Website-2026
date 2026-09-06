@@ -2,6 +2,7 @@ import Logo from '../components/Logo';
 import Arrow from '../components/Arrow';
 import { pageContent } from '../data/pages';
 import EventsPage from './EventsPage';
+import ImageCarousel from '../components/ImageCarousel';
 
 function StandalonePage({ path }) {
   if (path === '/events') {
@@ -70,43 +71,46 @@ function StandalonePage({ path }) {
         </section>
         <section className={`page-body container ${path === '/about' ? 'page-body-about' : ''}`}>
           {path === '/about' ? (
-            <div className="about-initiatives-section">
-              <div
-                className="about-initiatives-art interactive-art"
-                onMouseMove={handleSpotlight}
-                aria-label="IET Chapter Initiatives"
-              >
-                <img src="/about-initiatives.png" alt="IET Chapter Initiatives" />
+            <>
+              <div className="about-initiatives-section">
+                <div
+                  className="about-initiatives-art interactive-art"
+                  onMouseMove={handleSpotlight}
+                  aria-label="IET Chapter Initiatives"
+                >
+                  <img src="/about-initiatives.png" alt="IET Chapter Initiatives" />
+                </div>
+                <div className="about-right-wrapper">
+                  <span className="kicker">CHAPTER INITIATIVES</span>
+                  <h2>
+                    What we <em>do??</em>
+                  </h2>
+                  <p>
+                    At the IET BIT Mesra Student Chapter, we build practical problem-solving and
+                    technical proficiency through focused C++ workshops and dynamic campus
+                    competitions. From high-pressure programming challenges like{' '}
+                    <strong>Rewind Recode</strong> and <strong>Blind Coding</strong> to
+                    collaborative problem-solving in <strong>Split Solve</strong> and end-to-end
+                    interview simulations with <strong>SWE Quest</strong>, we provide platforms that
+                    test logic under real-world constraints.
+                  </p>
+                  <p>
+                    Our core mission is bridging the gap between foundational data structures and
+                    competitive execution, empowering students to sharpen their algorithmic skills
+                    and excel in software engineering.
+                  </p>
+                  <div className="page-body-actions">
+                    <a className="button primary" href="/events">
+                      Explore Events
+                    </a>
+                    <a className="button outline" href="/">
+                      Back to home <Arrow />
+                    </a>
+                  </div>
+                </div>
               </div>
-              <div className="about-right-wrapper">
-              <span className="kicker">CHAPTER INITIATIVES</span>
-              <h2>
-                What we <em>do??</em>
-              </h2>
-              <p>
-                At the IET BIT Mesra Student Chapter, we build practical problem-solving and
-                technical proficiency through focused C++ workshops and dynamic campus competitions.
-                From high-pressure programming challenges like <strong>Rewind Recode</strong> and{' '}
-                <strong>Blind Coding</strong> to collaborative problem-solving in{' '}
-                <strong>Split Solve</strong> and end-to-end interview simulations with{' '}
-                <strong>SWE Quest</strong>, we provide platforms that test logic under real-world
-                constraints.
-              </p>
-              <p>
-                Our core mission is bridging the gap between foundational data structures and
-                competitive execution, empowering students to sharpen their algorithmic skills and
-                excel in software engineering.
-              </p>
-              <div className="page-body-actions">
-                <a className="button primary" href="/events">
-                  Explore Events
-                </a>
-                <a className="button outline" href="/">
-                  Back to home <Arrow />
-                </a>
-              </div>
-            </div>
-            </div>
+              <ImageCarousel />
+            </>
           ) : (
             <>
               <span className="kicker">STATIC FRONTEND PREVIEW</span>
