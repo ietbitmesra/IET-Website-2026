@@ -1,4 +1,4 @@
-﻿/* Brand mark supplied by IET Bit Mesra */
+/* Brand mark supplied by IET Bit Mesra */
 .logo {
   gap: 0;
 }
@@ -19,12 +19,12 @@
   top: 50%;
   width: calc(2 * var(--orbit-radius));
   height: calc(2 * var(--orbit-radius));
-  border: 1px solid rgba(214, 255, 63, 0.2);
+  border: 1px solid rgba(139, 92, 246, 0.2);
   border-radius: 50%;
   transform: translate(-50%, -50%);
   box-shadow:
-    0 0 0 18px rgba(214, 255, 63, 0.025),
-    0 0 0 42px rgba(214, 255, 63, 0.018);
+    0 0 0 18px rgba(139, 92, 246, 0.025),
+    0 0 0 42px rgba(139, 92, 246, 0.018);
   pointer-events: none;
 }
 .orbit-layout .tool-logo {
@@ -792,3 +792,4 @@
     letter-spacing: 0.16em;
   }
 }
+

@@ -48,7 +48,7 @@ body {
 }
 .nav-cta:hover {
   transform: translateY(-1px);
-  box-shadow: 0 0 16px rgba(214, 255, 63, 0.4);
+  box-shadow: 0 0 16px rgba(139, 92, 246, 0.4);
 }
 .nav-cta .arrow {
   transition: transform 0.25s cubic-bezier(0.2, 0.75, 0.25, 1);
@@ -82,8 +82,8 @@ nav a:not(.nav-cta)::before {
   position: absolute;
   inset: 0;
   border-radius: 6px;
-  background: radial-gradient(circle at 50% 120%, rgba(214, 255, 63, 0.12), transparent 70%), rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(214, 255, 63, 0.18);
+  background: radial-gradient(circle at 50% 120%, rgba(139, 92, 246, 0.12), transparent 70%), rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(139, 92, 246, 0.18);
   opacity: 0;
   transform: scale(0.92);
   transition:
@@ -111,7 +111,7 @@ nav a:not(.nav-cta)::after {
 nav a:not(.nav-cta):hover {
   color: var(--paper, #f0f3f6);
   transform: translateY(-1px);
-  text-shadow: 0 0 10px rgba(214, 255, 63, 0.5);
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
 }
 nav a:not(.nav-cta):hover::before {
   opacity: 1;
@@ -190,8 +190,8 @@ nav a.active:not(.nav-cta)::after {
   border-left: 1px solid #394146;
   background-color: #111619;
   background-image:
-    linear-gradient(45deg, transparent 49.7%, rgba(214, 255, 63, 0.14) 50%, transparent 50.3%),
-    linear-gradient(-45deg, transparent 49.7%, rgba(214, 255, 63, 0.08) 50%, transparent 50.3%);
+    linear-gradient(45deg, transparent 49.7%, rgba(139, 92, 246, 0.14) 50%, transparent 50.3%),
+    linear-gradient(-45deg, transparent 49.7%, rgba(139, 92, 246, 0.08) 50%, transparent 50.3%);
   background-size:
     100% 100%,
     100% 100%;
@@ -200,7 +200,7 @@ nav a.active:not(.nav-cta)::after {
 .hero-art::before {
   background: radial-gradient(
     320px circle at var(--mx, 50%) var(--my, 45%),
-    rgba(214, 255, 63, 0.18),
+    rgba(139, 92, 246, 0.18),
     transparent 70%
   );
 }
@@ -482,7 +482,7 @@ footer {
   width: var(--scroll-progress, 0%);
   height: 3px;
   background: var(--lime);
-  box-shadow: 0 0 14px rgba(214, 255, 63, 0.45);
+  box-shadow: 0 0 14px rgba(139, 92, 246, 0.45);
   transition: width 0.08s linear;
   pointer-events: none;
 }
@@ -558,3 +558,4 @@ footer {
     transition: none;
   }
 }
+

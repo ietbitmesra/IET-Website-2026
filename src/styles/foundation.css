@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
 :root {
-  --glow-lime: rgba(214, 255, 63, 0.055);
+  --glow-lime: rgba(139, 92, 246, 0.055);
   --glow-violet: rgba(125, 54, 147, 0.045);
 }
 body {
@@ -248,7 +248,7 @@ h2 em {
   height: 7px;
   background: var(--lime);
   border-radius: 50%;
-  box-shadow: 0 0 0 5px rgba(214, 255, 63, 0.1);
+  box-shadow: 0 0 0 5px rgba(139, 92, 246, 0.1);
 }
 .n1 {
   left: 13%;
@@ -771,3 +771,4 @@ footer {
     transition: none !important;
   }
 }
+

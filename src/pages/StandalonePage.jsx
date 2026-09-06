@@ -95,7 +95,7 @@ function StandalonePage({ path }) {
               </p>
               <div className="page-body-actions">
                 <a className="button primary" href="/events">
-                  Explore Events <Arrow />
+                  Explore Events
                 </a>
                 <a className="button outline" href="/">
                   Back to home <Arrow />

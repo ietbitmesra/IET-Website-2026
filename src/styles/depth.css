@@ -10,7 +10,7 @@
   right: 4%;
   top: 12%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(214, 255, 63, 0.07), transparent 66%);
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.07), transparent 66%);
   filter: blur(10px);
   pointer-events: none;
   z-index: -1;
@@ -31,7 +31,7 @@
   pointer-events: none;
   background: radial-gradient(
     260px circle at var(--mx, 50%) var(--my, 45%),
-    rgba(214, 255, 63, 0.13),
+    rgba(139, 92, 246, 0.13),
     transparent 68%
   );
   opacity: 0;
@@ -54,7 +54,7 @@
   top: 30%;
   width: 140px;
   height: 140px;
-  border: 1px solid rgba(214, 255, 63, 0.2);
+  border: 1px solid rgba(139, 92, 246, 0.2);
   transform: rotate(45deg);
   opacity: 0.5;
 }
@@ -209,6 +209,35 @@
   flex-wrap: wrap;
   justify-content: flex-start;
 }
+.page-body-actions .button {
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.page-body-actions .button.primary {
+  background: #8b5cf6;
+  color: #fff;
+  box-shadow: 0 0 0 rgba(139, 92, 246, 0);
+}
+.page-body-actions .button.primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  background: #9a6dff;
+  box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.4);
+}
+.page-body-actions .button.outline {
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.page-body-actions .button.outline:hover {
+  transform: translateY(-3px);
+  border-color: #8b5cf6;
+  background: rgba(139, 92, 246, 0.08);
+}
+.page-body-actions .button.outline .arrow {
+  transition: transform 0.3s ease, color 0.3s ease;
+  display: inline-block;
+}
+.page-body-actions .button.outline:hover .arrow {
+  color: #8b5cf6;
+  transform: translate(3px, -3px);
+}
 .page-body h2 {
   font-size: clamp(38px, 5vw, 64px);
   line-height: 1.02;
@@ -269,7 +298,7 @@
   pointer-events: none;
   background: radial-gradient(
     190px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(214, 255, 63, 0.1),
+    rgba(139, 92, 246, 0.1),
     transparent 70%
   );
   opacity: 0;
@@ -287,7 +316,7 @@
   transition: border-color 0.22s;
 }
 .interactive-card:hover::after {
-  border-color: rgba(214, 255, 63, 0.35);
+  border-color: rgba(139, 92, 246, 0.35);
 }
 .interactive-card > * {
   position: relative;
@@ -392,3 +421,4 @@
     opacity: 0.88;
   }
 }
+
