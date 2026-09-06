@@ -3,6 +3,7 @@ import Arrow from '../components/Arrow';
 import { pageContent } from '../data/pages';
 import EventsPage from './EventsPage';
 import ImageCarousel from '../components/ImageCarousel';
+import SocialsSection from '../components/SocialsSection';
 
 function StandalonePage({ path }) {
   if (path === '/events') {
@@ -110,6 +111,7 @@ function StandalonePage({ path }) {
                 </div>
               </div>
               <ImageCarousel />
+              <SocialsSection />
             </>
           ) : (
             <>
