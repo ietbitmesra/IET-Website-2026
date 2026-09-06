@@ -1,4 +1,4 @@
-﻿/* Brand mark supplied by IET Bit Mesra */
+/* Brand mark supplied by IET Bit Mesra */
 .logo {
   gap: 0;
 }
@@ -182,8 +182,8 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 18px 14px;
-  color: #f6f3dc;
-  background: linear-gradient(145deg, #b61d32, #22070c 68%, #08090a);
+  color: #f5f3ff;
+  background: linear-gradient(145deg, #6d28d9, #2e1065 68%, #0f0728);
 }
 .poster-fallback span {
   font: 8px 'DM Mono';
@@ -201,8 +201,18 @@
   font: 8px 'DM Mono';
   letter-spacing: 0.1em;
 }
+.poster-split .poster-fallback {
+  background: linear-gradient(145deg, #7c3aed, #3b0764 65%, #13072b);
+  color: #fae8ff;
+  text-align: center;
+}
+.poster-split .poster-fallback strong {
+  font-size: clamp(20px, 2.2vw, 32px);
+  margin: auto;
+}
 .poster-cpp .poster-fallback {
-  background: radial-gradient(circle at 50% 42%, #0a7edc, #031532 60%, #020817);
+  background: radial-gradient(circle at 50% 42%, #5b21b6, #1e1145 60%, #0c071d);
+  color: #ede9fe;
   text-align: center;
 }
 .poster-cpp .poster-fallback strong {
@@ -210,30 +220,40 @@
   margin: auto;
 }
 .poster-swe .poster-fallback {
-  background: linear-gradient(145deg, #152c67, #080d29 60%, #8c76c3);
-  justify-content: center;
-  gap: 18px;
+  background: linear-gradient(145deg, #8b5cf6, #3b0764 60%, #15062b);
+  color: #f3e8ff;
   text-align: center;
 }
 .poster-swe .poster-fallback strong {
   font-size: clamp(22px, 2.5vw, 38px);
+  margin: auto;
 }
 .poster-rewind .poster-fallback {
-  background: linear-gradient(145deg, #111, #050505);
-  color: #eeff89;
+  background: linear-gradient(145deg, #4c1d95, #1e0938 75%, #0a0314);
+  color: #c084fc;
+  text-align: center;
 }
 .poster-rewind .poster-fallback strong {
-  font-family: 'DM Mono';
   font-size: clamp(19px, 2.1vw, 31px);
-  letter-spacing: -0.08em;
+  letter-spacing: -0.04em;
+  margin: auto;
 }
 .poster-blind .poster-fallback {
-  background: linear-gradient(145deg, #260c42, #080214 70%);
+  background: linear-gradient(145deg, #581c87, #240738 70%, #0d0217);
   color: #f0d5ff;
   text-align: center;
 }
 .poster-blind .poster-fallback strong {
   font-size: clamp(22px, 2.4vw, 35px);
+  margin: auto;
+}
+.poster-placeholder .poster-fallback {
+  background: linear-gradient(145deg, #3c096c, #16002c 75%, #0b0117);
+  color: #d8b4fe;
+  text-align: center;
+}
+.poster-placeholder .poster-fallback strong {
+  font-size: clamp(18px, 2vw, 28px);
   margin: auto;
 }
 .poster-index {

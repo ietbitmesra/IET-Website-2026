@@ -1,8 +1,12 @@
 import Logo from '../components/Logo';
 import Arrow from '../components/Arrow';
 import { pageContent } from '../data/pages';
+import EventsPage from './EventsPage';
 
 function StandalonePage({ path }) {
+  if (path === '/events') {
+    return <EventsPage />;
+  }
   const [label, title, desc] = pageContent[path] || pageContent['/about'];
 
   return (
