@@ -111,6 +111,15 @@ function StandalonePage({ path }) {
                 </div>
               </div>
               <ImageCarousel />
+              <div className="quote-section container">
+                <blockquote className="quote-block">
+                  <p className="quote-body">
+                    <span className="quote-line-white">"Talk is cheap,</span>
+                    <span className="quote-line-highlight">show me the code."</span>
+                  </p>
+                  <cite className="quote-author">LINUS TORVALDS</cite>
+                </blockquote>
+              </div>
               <SocialsSection />
             </>
           ) : (

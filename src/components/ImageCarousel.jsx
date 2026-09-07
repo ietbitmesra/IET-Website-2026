@@ -1,4 +1,5 @@
 import { useRef, useEffect, useCallback } from 'react';
+import Arrow from './Arrow';
 
 const gallerySlides = [
   {
@@ -146,11 +147,7 @@ function ImageCarousel() {
 
   return (
     <div className="gallery-carousel">
-      <div
-        className="gallery-viewport"
-        onMouseEnter={pauseAutoPlay}
-        onMouseLeave={() => resumeAutoPlay(800)}
-      >
+      <div className="gallery-viewport">
         <div
           className="gallery-track"
           ref={trackRef}
@@ -165,6 +162,8 @@ function ImageCarousel() {
               className={`gallery-item gallery-item--${slide.size} gallery-item--${slide.offset}`}
               key={index}
               style={{ width: getSlideWidth(slide.size) }}
+              onMouseEnter={pauseAutoPlay}
+              onMouseLeave={() => resumeAutoPlay(400)}
             >
               <span className="gallery-label">{slide.label}</span>
               <div className="gallery-frame">
@@ -209,6 +208,10 @@ function ImageCarousel() {
             <polyline points="9 18 15 12 9 6" />
           </svg>
         </button>
+        <a href="/gallery" className="carousel-gallery-btn" aria-label="View Gallery">
+          <span>Gallery</span>
+          <Arrow />
+        </a>
       </div>
     </div>
   );

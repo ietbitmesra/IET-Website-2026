@@ -1,5 +1,3 @@
-import React from 'react';
-
 function SocialsSection() {
   return (
     <section className="socials-section container">
