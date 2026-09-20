@@ -154,6 +154,12 @@
 .interactive-art {
   pointer-events: auto;
   overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%),
+                      linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%),
+              linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+  mask-composite: intersect;
 }
 .interactive-art img {
   position: relative;

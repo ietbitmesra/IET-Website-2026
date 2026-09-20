@@ -893,11 +893,11 @@
   top: 50%;
   transform: translate(-50%, calc(-50% - 70px));
   width: min(500px, 70vw);
-  height: min(320px, 45vw); /* Stricter crop to ensure text is fully hidden */
+  height: min(320px, 45vw);
   background: url('/iet-bit-mesra.svg') center top / cover no-repeat;
-  opacity: 0.12; /* Subtle watermark */
-  mix-blend-mode: screen; /* Makes the #000 SVG background completely transparent */
-  filter: grayscale(1) brightness(2.5); /* Just a clean bright watermark, no glow */
+  opacity: 0.16;
+  mix-blend-mode: screen;
+  filter: brightness(0.8) sepia(1) saturate(3) hue-rotate(230deg);
   pointer-events: none;
   z-index: 0;
 }
