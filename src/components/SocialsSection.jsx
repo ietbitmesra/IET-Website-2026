@@ -8,7 +8,7 @@ function SocialsSection() {
         <em>socials.</em>
       </h2>
       <div className="socials-cards">
-        <a href="#" target="_blank" rel="noopener noreferrer" className="social-card instagram">
+        <a href="https://www.instagram.com/ietbitmesra/" target="_blank" rel="noopener noreferrer" className="social-card instagram">
           <svg
             viewBox="0 0 24 24"
             fill="none"
@@ -23,7 +23,7 @@ function SocialsSection() {
           </svg>
           <span>Instagram</span>
         </a>
-        <a href="#" target="_blank" rel="noopener noreferrer" className="social-card linkedin">
+        <a href="https://www.linkedin.com/company/iet-on-campus-bit-mesra/posts/" target="_blank" rel="noopener noreferrer" className="social-card linkedin">
           <svg
             viewBox="0 0 24 24"
             fill="none"
@@ -38,7 +38,7 @@ function SocialsSection() {
           </svg>
           <span>LinkedIn</span>
         </a>
-        <a href="#" target="_blank" rel="noopener noreferrer" className="social-card facebook">
+        <a href="https://www.facebook.com/ietbitmesra" target="_blank" rel="noopener noreferrer" className="social-card facebook">
           <svg
             viewBox="0 0 24 24"
             fill="none"
