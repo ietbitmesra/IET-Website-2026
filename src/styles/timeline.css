@@ -10,7 +10,8 @@
 
 .timeline-header .kicker {
   display: block;
-  margin-bottom: 15px;
+  margin-bottom: 35px;
+  font-size: 18px;
 }
 
 .timeline-header h2 {

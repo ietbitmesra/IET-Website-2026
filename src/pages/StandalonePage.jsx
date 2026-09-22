@@ -5,6 +5,7 @@ import EventsPage from './EventsPage';
 import ImageCarousel from '../components/ImageCarousel';
 import SocialsSection from '../components/SocialsSection';
 import TimelineSection from '../components/TimelineSection';
+import AchievementsSection from '../components/AchievementsSection';
 
 function StandalonePage({ path }) {
   if (path === '/events') {
@@ -122,6 +123,7 @@ function StandalonePage({ path }) {
                   <cite className="quote-author">LINUS TORVALDS</cite>
                 </blockquote>
               </div>
+              <AchievementsSection />
               <SocialsSection />
             </>
           ) : (
