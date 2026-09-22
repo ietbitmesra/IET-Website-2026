@@ -4,6 +4,7 @@ import { pageContent } from '../data/pages';
 import EventsPage from './EventsPage';
 import ImageCarousel from '../components/ImageCarousel';
 import SocialsSection from '../components/SocialsSection';
+import TimelineSection from '../components/TimelineSection';
 
 function StandalonePage({ path }) {
   if (path === '/events') {
@@ -111,6 +112,7 @@ function StandalonePage({ path }) {
                 </div>
               </div>
               <ImageCarousel />
+              <TimelineSection />
               <div className="quote-section container">
                 <blockquote className="quote-block">
                   <p className="quote-body">
