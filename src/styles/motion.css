@@ -167,7 +167,59 @@ main {
     opacity: 0.92;
   }
 }
+/* Section-by-section fade in & fade out on scroll */
+.section-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 1.85s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.section-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Quote and Tux backdrop load slow */
+.quote-section.section-reveal,
+.tux-backdrop-wrapper.section-reveal {
+  transition:
+    opacity 2.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 2.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Achievements section and cards load ultra slow and graceful */
+.achievements-section.section-reveal {
+  transition:
+    opacity 3.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 3.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.achievements-section.section-reveal .achievements-grid {
+  transition:
+    opacity 3.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s,
+    transform 3.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+}
+
+.achievements-section.section-reveal:not(.is-visible) .achievements-grid {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.achievements-section.section-reveal.is-visible .achievements-grid {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .section-reveal,
+  .achievements-section.section-reveal .achievements-grid {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
   main {
     animation: none;
   }

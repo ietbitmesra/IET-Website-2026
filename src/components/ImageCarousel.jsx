@@ -146,7 +146,7 @@ function ImageCarousel() {
   };
 
   return (
-    <div className="gallery-carousel">
+    <div className="gallery-carousel section-reveal">
       <div className="gallery-viewport">
         <div
           className="gallery-track"

@@ -2,7 +2,7 @@ import Arrow from './Arrow';
 
 function About() {
   return (
-    <section className="section about container" id="about">
+    <section className="section about container section-reveal" id="about">
       <div className="about-mark">
         IET
         <br />

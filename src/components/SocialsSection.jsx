@@ -1,6 +1,6 @@
 function SocialsSection() {
   return (
-    <section className="socials-section container">
+    <section className="socials-section container section-reveal">
       <span className="kicker">STAY CONNECTED</span>
       <h2>
         Follow our

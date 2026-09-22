@@ -11,12 +11,13 @@ function AchievementsSection() {
       desc: "Peer-to-peer learning culture",
     },
     {
-      circle: "50+",
-      kicker: "CONSISTENT ACTION",
-      title: "Continuous Learning",
-      image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=800&auto=format&fit=crop", // Hackathon/event
-      quote: "Hosted 50+ workshops, hackathons, and CP contests",
-      desc: "SWE Quest & Rewind Recode",
+      circle: "#55",
+      kicker: "ICPC REGIONALS",
+      title: "ICPC Amritapuri",
+      image: "/icpc-amritapuri.jpg",
+      position: "center 15%",
+      quote: "Rank 55 out of ~310 teams at the ICPC Amritapuri Multisite Regionals as a 2nd-year team from BIT Mesra.",
+      desc: "Team Trie Again · 2nd-Year",
     },
     {
       circle: "Top",
@@ -29,7 +30,7 @@ function AchievementsSection() {
   ];
 
   return (
-    <section className="achievements-section container">
+    <section className="achievements-section container section-reveal">
       <div className="achievements-header">
         <h2>Our <em>Achievements</em></h2>
         <p className="achievements-subtitle">Building a legacy through code and community.</p>
@@ -49,7 +50,8 @@ function AchievementsSection() {
                 <img 
                   src={item.image} 
                   alt={item.title} 
-                  className="achievement-img" 
+                  className="achievement-img"
+                  style={item.position ? { objectPosition: item.position } : undefined}
                 />
                 <div className="achievement-glass">
                   <p className="achievement-quote">"{item.quote}"</p>

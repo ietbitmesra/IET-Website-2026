@@ -50,7 +50,7 @@ function TimelineSection() {
   ];
 
   return (
-    <section className="timeline-container container">
+    <section className="timeline-container container section-reveal">
       <div className="timeline-header">
         <span className="kicker">OUR JOURNEY</span>
         <h2>

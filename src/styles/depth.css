@@ -63,6 +63,8 @@
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
+  border-bottom: none;
+  padding-bottom: 110px;
 }
 .page-hero-about::after {
   display: none;
@@ -121,6 +123,7 @@
 .page-body-about {
   position: relative;
   overflow: hidden;
+  padding-top: 100px;
   padding-bottom: 30px;
 }
 .standalone-footer {

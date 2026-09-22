@@ -882,7 +882,7 @@
 /* Gallery Carousel */
 .gallery-carousel {
   position: relative;
-  margin-top: 120px;
+  margin-top: 220px;
   width: 100%;
   overflow: hidden;
 }
@@ -1163,6 +1163,38 @@
   text-transform: uppercase;
   color: #8e96a0;
   display: block;
+}
+
+/* Tux Mascot Backdrop in gap */
+.tux-backdrop-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  margin-bottom: -110px;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.tux-backdrop-img {
+  width: 160px;
+  height: auto;
+  opacity: 0.055;
+  filter: drop-shadow(0 0 18px rgba(139, 92, 246, 0.2));
+  transition: opacity 1.8s ease, transform 1.8s ease;
+}
+
+@media (max-width: 768px) {
+  .tux-backdrop-wrapper {
+    margin-top: 60px;
+    margin-bottom: -70px;
+  }
+  .tux-backdrop-img {
+    width: 120px;
+    opacity: 0.045;
+  }
 }
 
 /* Socials Section */

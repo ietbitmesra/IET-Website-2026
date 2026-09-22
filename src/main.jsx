@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
+import Lenis from 'lenis';
+import 'lenis/dist/lenis.css';
 import './styles.css';
 
 import { events } from './data/events';
@@ -25,6 +27,31 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState(null);
   const [path, setPath] = useState(window.location.pathname);
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const lenis = new Lenis({
+      duration: 1.6,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      wheelMultiplier: 0.8,
+      touchMultiplier: 1.2,
+    });
+
+    let rafId;
+    function raf(time) {
+      lenis.raf(time);
+      rafId = requestAnimationFrame(raf);
+    }
+    rafId = requestAnimationFrame(raf);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      lenis.destroy();
+    };
+  }, []);
+
   useEffect(() => {
     const onScroll = () => {
       const max = document.documentElement.scrollHeight - window.innerHeight;
@@ -59,16 +86,24 @@ function App() {
     return () => links.forEach((link) => link.removeEventListener('click', handleClick));
   }, [path]);
   useEffect(() => {
-    const items = document.querySelectorAll('.reveal-on-scroll,.scroll-reveal');
-    const observer = new IntersectionObserver(
-      (entries) =>
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add('is-visible');
-        }),
-      { threshold: 0.12 },
-    );
-    items.forEach((item) => observer.observe(item));
-    return () => observer.disconnect();
+    const timer = setTimeout(() => {
+      const items = document.querySelectorAll('.reveal-on-scroll, .scroll-reveal, .section-reveal');
+      const observer = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+            } else {
+              entry.target.classList.remove('is-visible');
+            }
+          }),
+        { threshold: 0.05, rootMargin: '0px 0px -20px 0px' },
+      );
+      items.forEach((item) => observer.observe(item));
+      return () => observer.disconnect();
+    }, 60);
+
+    return () => clearTimeout(timer);
   }, [path]);
   if (path !== '/') return <StandalonePage path={path} />;
   return (
@@ -80,7 +115,7 @@ function App() {
         <StatsStrip />
         <Toolchain />
         <Ticker />
-        <section className="section container" id="events">
+        <section className="section container section-reveal" id="events">
           <div className="section-head">
             <div>
               <span className="kicker">02 / ACTIVITY</span>
@@ -98,7 +133,7 @@ function App() {
           <PastEvents />
         </section>
         <Leaderboard />
-        <section className="section container" id="resources">
+        <section className="section container section-reveal" id="resources">
           <div className="section-head">
             <div>
               <span className="kicker">04 / RESOURCE VAULT</span>

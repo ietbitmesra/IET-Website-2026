@@ -2,7 +2,7 @@ import Arrow from './Arrow';
 
 function JoinCTA() {
   return (
-    <section className="join" id="join">
+    <section className="join section-reveal" id="join">
       <div className="container join-inner">
         <span className="kicker">06 / YOUR NEXT MOVE</span>
         <h2>

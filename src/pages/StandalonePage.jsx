@@ -75,7 +75,7 @@ function StandalonePage({ path }) {
         <section className={`page-body container ${path === '/about' ? 'page-body-about' : ''}`}>
           {path === '/about' ? (
             <>
-              <div className="about-initiatives-section">
+              <div className="about-initiatives-section section-reveal">
                 <div
                   className="about-initiatives-art interactive-art"
                   onMouseMove={handleSpotlight}
@@ -114,7 +114,7 @@ function StandalonePage({ path }) {
               </div>
               <ImageCarousel />
               <TimelineSection />
-              <div className="quote-section container">
+              <div className="quote-section container section-reveal">
                 <blockquote className="quote-block">
                   <p className="quote-body">
                     <span className="quote-line-white">"Talk is cheap,</span>
@@ -122,6 +122,9 @@ function StandalonePage({ path }) {
                   </p>
                   <cite className="quote-author">LINUS TORVALDS</cite>
                 </blockquote>
+              </div>
+              <div className="tux-backdrop-wrapper section-reveal" aria-hidden="true">
+                <img src="/tux-outline.svg" alt="" className="tux-backdrop-img" />
               </div>
               <AchievementsSection />
               <SocialsSection />
