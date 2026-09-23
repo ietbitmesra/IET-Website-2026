@@ -6,7 +6,8 @@ import ImageCarousel from '../components/ImageCarousel';
 import SocialsSection from '../components/SocialsSection';
 import TimelineSection from '../components/TimelineSection';
 import AchievementsSection from '../components/AchievementsSection';
-import HeartbeatPulse from '../components/HeartbeatPulse';
+import TechLinesHud from '../components/TechLinesHud';
+// import CircularHud from '../components/CircularHud';
 
 function StandalonePage({ path }) {
   if (path === '/events') {
@@ -73,7 +74,7 @@ function StandalonePage({ path }) {
             </div>
           )}
         </section>
-        {path === '/about' && <HeartbeatPulse />}
+        {path === '/about' && <TechLinesHud />}
         <section className={`page-body container ${path === '/about' ? 'page-body-about' : ''}`}>
           {path === '/about' ? (
             <>
@@ -114,6 +115,7 @@ function StandalonePage({ path }) {
                   </div>
                 </div>
               </div>
+              {/* <CircularHud /> */}
               <ImageCarousel />
               <TimelineSection />
               <div className="quote-section container section-reveal">
