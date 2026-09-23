@@ -891,13 +891,15 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, calc(-50% - 70px));
-  width: min(500px, 70vw);
-  height: min(320px, 45vw);
-  background: url('/iet-bit-mesra.svg') center top / cover no-repeat;
-  opacity: 0.16;
+  transform: translate(-50%, calc(-50% - 20px));
+  width: min(390px, 56vw);
+  height: min(200px, 29vw);
+  background: url('/iet-logo-bg.svg') center / contain no-repeat;
+  opacity: 0.14;
   mix-blend-mode: screen;
-  filter: brightness(0.8) sepia(1) saturate(3) hue-rotate(230deg);
+  filter: drop-shadow(0 0 10px rgba(125, 54, 147, 0.25));
+  -webkit-mask-image: radial-gradient(ellipse 85% 80% at 50% 50%, #000 70%, transparent 100%);
+  mask-image: radial-gradient(ellipse 85% 80% at 50% 50%, #000 70%, transparent 100%);
   pointer-events: none;
   z-index: 0;
 }
