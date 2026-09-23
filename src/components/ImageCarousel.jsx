@@ -1,4 +1,4 @@
-import { useRef, useEffect, useCallback } from 'react';
+import { useRef, useEffect, useCallback, useState } from 'react';
 import Arrow from './Arrow';
 
 const gallerySlides = [
@@ -37,8 +37,9 @@ const gallerySlides = [
 // Duplicate for seamless loop
 const items = [...gallerySlides, ...gallerySlides, ...gallerySlides, ...gallerySlides];
 
-// Width varies by size: small=240, medium=280, large=340, + 60px gap
-const getSlideWidth = (size) => {
+// Width varies by size: small=240, medium=280, large=340, expanded=385, + 60px gap
+const getSlideWidth = (size, isExpanded = false) => {
+  if (isExpanded) return 385;
   if (size === 'large') return 340;
   if (size === 'medium') return 280;
   return 240;
@@ -47,9 +48,13 @@ const GAP = 60;
 const singleSetWidth = gallerySlides.reduce((sum, s) => sum + getSlideWidth(s.size) + GAP, 0);
 
 function ImageCarousel() {
+  const [expandedIndex, setExpandedIndex] = useState(null);
   const trackRef = useRef(null);
   const isInteracting = useRef(false);
   const isDragging = useRef(false);
+  const hasDragged = useRef(false);
+  const pointerDownPos = useRef({ x: 0, y: 0, time: 0 });
+  const lastToggledTime = useRef(0);
   const startX = useRef(0);
   const startScrollLeft = useRef(0);
   const resumeTimer = useRef(null);
@@ -64,6 +69,14 @@ function ImageCarousel() {
     resumeTimer.current = setTimeout(() => {
       isInteracting.current = false;
     }, delay);
+  }, []);
+
+  const toggleExpand = useCallback((index) => {
+    const now = Date.now();
+    if (now - lastToggledTime.current < 250) return;
+    if (hasDragged.current) return;
+    lastToggledTime.current = now;
+    setExpandedIndex((prev) => (prev === index ? null : index));
   }, []);
 
   useEffect(() => {
@@ -105,31 +118,46 @@ function ImageCarousel() {
   }, []);
 
   const handlePointerDown = (e) => {
+    if (e.button !== 0 && e.button !== undefined) return;
     isDragging.current = true;
+    hasDragged.current = false;
     pauseAutoPlay();
     startX.current = e.clientX;
-    startScrollLeft.current = trackRef.current.scrollLeft;
-    trackRef.current.setPointerCapture(e.pointerId);
+    pointerDownPos.current = { x: e.clientX, y: e.clientY, time: Date.now() };
+    startScrollLeft.current = trackRef.current ? trackRef.current.scrollLeft : 0;
   };
 
   const handlePointerMove = (e) => {
     if (!isDragging.current || !trackRef.current) return;
     const delta = e.clientX - startX.current;
-    trackRef.current.scrollLeft = startScrollLeft.current - delta;
+    if (Math.abs(delta) > 6) {
+      if (!hasDragged.current) {
+        hasDragged.current = true;
+        try {
+          trackRef.current.setPointerCapture(e.pointerId);
+        } catch {
+          // ignore
+        }
+      }
+      trackRef.current.scrollLeft = startScrollLeft.current - delta;
+    }
   };
 
   const handlePointerUp = (e) => {
     if (!isDragging.current) return;
     isDragging.current = false;
-    try {
-      trackRef.current.releasePointerCapture(e.pointerId);
-    } catch {
-      // ignore
+    if (hasDragged.current && trackRef.current) {
+      try {
+        trackRef.current.releasePointerCapture(e.pointerId);
+      } catch {
+        // ignore
+      }
     }
     resumeAutoPlay(1500);
   };
 
   const scrollPrev = () => {
+    setExpandedIndex(null);
     pauseAutoPlay();
     if (trackRef.current) {
       trackRef.current.scrollBy({ left: -340, behavior: 'smooth' });
@@ -138,6 +166,7 @@ function ImageCarousel() {
   };
 
   const scrollNext = () => {
+    setExpandedIndex(null);
     pauseAutoPlay();
     if (trackRef.current) {
       trackRef.current.scrollBy({ left: 340, behavior: 'smooth' });
@@ -149,7 +178,7 @@ function ImageCarousel() {
     <div className="gallery-carousel section-reveal">
       <div className="gallery-viewport">
         <div
-          className="gallery-track"
+          className={`gallery-track ${expandedIndex !== null ? 'has-expanded' : ''}`}
           ref={trackRef}
           onScroll={handleScroll}
           onPointerDown={handlePointerDown}
@@ -157,26 +186,49 @@ function ImageCarousel() {
           onPointerUp={handlePointerUp}
           onPointerCancel={handlePointerUp}
         >
-          {items.map((slide, index) => (
-            <div
-              className={`gallery-item gallery-item--${slide.size} gallery-item--${slide.offset}`}
-              key={index}
-              style={{ width: getSlideWidth(slide.size) }}
-              onMouseEnter={pauseAutoPlay}
-              onMouseLeave={() => resumeAutoPlay(400)}
-            >
-              <span className="gallery-label">{slide.label}</span>
-              <div className="gallery-frame">
-                <img
-                  src={slide.src}
-                  alt={slide.label}
-                  loading="lazy"
-                  decoding="async"
-                  draggable={false}
-                />
+          {items.map((slide, index) => {
+            const isExpanded = expandedIndex === index;
+            return (
+              <div
+                className={`gallery-item gallery-item--${slide.size} gallery-item--${slide.offset} ${
+                  isExpanded ? 'is-expanded' : ''
+                }`}
+                key={index}
+                style={{ width: getSlideWidth(slide.size, isExpanded) }}
+                onMouseEnter={pauseAutoPlay}
+                onMouseLeave={() => {
+                  if (expandedIndex === index) {
+                    setExpandedIndex(null);
+                  }
+                  resumeAutoPlay(400);
+                }}
+                onPointerUp={(e) => {
+                  const dist = Math.hypot(
+                    e.clientX - pointerDownPos.current.x,
+                    e.clientY - pointerDownPos.current.y
+                  );
+                  if (dist < 8 && !hasDragged.current) {
+                    toggleExpand(index);
+                  }
+                }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  toggleExpand(index);
+                }}
+              >
+                <span className="gallery-label">{slide.label}</span>
+                <div className="gallery-frame">
+                  <img
+                    src={slide.src}
+                    alt={slide.label}
+                    loading="lazy"
+                    decoding="async"
+                    draggable={false}
+                  />
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
       <div className="carousel-controls">
