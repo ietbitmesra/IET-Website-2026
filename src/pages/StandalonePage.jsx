@@ -6,6 +6,7 @@ import ImageCarousel from '../components/ImageCarousel';
 import SocialsSection from '../components/SocialsSection';
 import TimelineSection from '../components/TimelineSection';
 import AchievementsSection from '../components/AchievementsSection';
+import HeartbeatPulse from '../components/HeartbeatPulse';
 
 function StandalonePage({ path }) {
   if (path === '/events') {
@@ -72,6 +73,7 @@ function StandalonePage({ path }) {
             </div>
           )}
         </section>
+        {path === '/about' && <HeartbeatPulse />}
         <section className={`page-body container ${path === '/about' ? 'page-body-about' : ''}`}>
           {path === '/about' ? (
             <>
