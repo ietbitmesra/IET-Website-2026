@@ -108,10 +108,30 @@ function StandalonePage({ path }) {
                   </p>
                   <div className="page-body-actions">
                     <a className="button primary" href="/events">
-                      Explore Events
+                      <span className="btn-icon-circle">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 0C12 6.627 6.627 12 0 12c6.627 0 12 5.627 12 12 0-6.627 5.627-12 12-12-6.627 0-12-5.627-12-12z" />
+                        </svg>
+                      </span>
+                      <span>Explore Events</span>
                     </a>
                     <a className="button outline" href="/">
-                      Back to home <Arrow />
+                      <span className="btn-icon-circle">
+                        <svg
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <line x1="7" y1="17" x2="17" y2="7" />
+                          <polyline points="7 7 17 7 17 17" />
+                        </svg>
+                      </span>
+                      <span>Back to home</span>
                     </a>
                   </div>
                 </div>
