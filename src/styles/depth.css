@@ -754,9 +754,7 @@
     padding-bottom: 40px;
   }
   .mobile-back {
-    display: block;
-    font: 10px 'DM Mono';
-    color: var(--muted);
+    display: none;
   }
   .page-hero-about {
     flex-direction: column;

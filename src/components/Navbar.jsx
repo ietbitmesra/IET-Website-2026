@@ -1,12 +1,19 @@
 import Logo from './Logo';
 import Arrow from './Arrow';
 
-function Navbar({ menuOpen, setMenuOpen }) {
+function Navbar({ menuOpen, setMenuOpen, currentPath = '' }) {
   return (
     <header className="nav">
       <div className="nav-inner">
         <Logo />
         <nav className={menuOpen ? 'open' : ''}>
+          <a
+            className={`mobile-only-home ${currentPath === '/' ? 'active' : ''}`}
+            href="/"
+            onClick={() => setMenuOpen(false)}
+          >
+            Home
+          </a>
           {[
             ['About', '/about'],
             ['Events', '/events'],
@@ -14,15 +21,25 @@ function Navbar({ menuOpen, setMenuOpen }) {
             ['Projects', '/projects'],
             ['Community', '/community'],
           ].map(([x, h]) => (
-            <a key={x} href={h} onClick={() => setMenuOpen(false)}>
+            <a
+              key={x}
+              className={currentPath === h ? 'active' : ''}
+              href={h}
+              onClick={() => setMenuOpen(false)}
+            >
               {x}
             </a>
           ))}
-          <a className="nav-cta" href="/join">
+          <a className="nav-cta" href="/join" onClick={() => setMenuOpen(false)}>
             Join IET <Arrow />
           </a>
         </nav>
-        <button className="menu" aria-label="Toggle menu" onClick={() => setMenuOpen(!menuOpen)}>
+        <button
+          className={`menu ${menuOpen ? 'open' : ''}`}
+          aria-label="Toggle menu"
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
           <i></i>
           <i></i>
         </button>

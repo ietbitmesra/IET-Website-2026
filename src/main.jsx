@@ -76,10 +76,11 @@ function App() {
     const links = document.querySelectorAll('a[href^="/"]');
     const handleClick = (e) => {
       const href = e.currentTarget.getAttribute('href');
-      if (href === '/') return;
+      if (!href || href.startsWith('/#')) return;
       e.preventDefault();
       window.history.pushState({}, '', href);
       setPath(href);
+      setMenuOpen(false);
       window.scrollTo(0, 0);
     };
     links.forEach((link) => link.addEventListener('click', handleClick));
@@ -109,7 +110,7 @@ function App() {
   return (
     <div id="top">
       <div className="scroll-progress" aria-hidden="true"></div>
-      <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} currentPath={path} />
       <main>
         <Hero />
         <StatsStrip />

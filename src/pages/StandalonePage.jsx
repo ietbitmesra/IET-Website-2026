@@ -1,5 +1,6 @@
-import Logo from '../components/Logo';
+import { useState } from 'react';
 import Arrow from '../components/Arrow';
+import Navbar from '../components/Navbar';
 import { pageContent } from '../data/pages';
 import EventsPage from './EventsPage';
 import ImageCarousel from '../components/ImageCarousel';
@@ -12,6 +13,8 @@ import TuxMascot from '../components/TuxMascot';
 // import CircularHud from '../components/CircularHud';
 
 function StandalonePage({ path }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   if (path === '/events') {
     return <EventsPage />;
   }
@@ -25,30 +28,7 @@ function StandalonePage({ path }) {
 
   return (
     <>
-      <header className="nav">
-        <div className="nav-inner">
-          <Logo />
-          <nav className="open">
-            {[
-              ['About', '/about'],
-              ['Events', '/events'],
-              ['Resources', '/resources'],
-              ['Projects', '/projects'],
-              ['Community', '/community'],
-            ].map(([x, h]) => (
-              <a key={x} className={path === h ? 'active' : ''} href={h}>
-                {x}
-              </a>
-            ))}
-            <a className="nav-cta" href="/join">
-              Join IET <Arrow />
-            </a>
-          </nav>
-          <a className="mobile-back" href="/">
-            Home
-          </a>
-        </div>
-      </header>
+      <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} currentPath={path} />
       <main>
         <section className={`page-hero container ${path === '/about' ? 'page-hero-about' : ''}`}>
           <div className="page-hero-content">

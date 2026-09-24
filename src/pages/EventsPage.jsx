@@ -10,7 +10,7 @@ function EventsPage() {
 
   return (
     <>
-      <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} currentPath="/events" />
       <section className="page-hero events-hero container">
         <div className="events-hero-content">
           <span className="kicker">IET / ACTIVITY LOG / 2026</span>
