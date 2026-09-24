@@ -1,5 +1,4 @@
 import { useRef, useEffect, useCallback, useState } from 'react';
-import Arrow from './Arrow';
 
 const gallerySlides = [
   {
@@ -232,28 +231,28 @@ function ImageCarousel() {
         </div>
       </div>
       <div className="carousel-controls">
-        <button onClick={scrollPrev} className="carousel-btn" aria-label="Previous" type="button">
+        <button onClick={scrollPrev} className="carousel-btn carousel-prev" aria-label="Previous" type="button">
           <svg
-            width="24"
-            height="24"
+            width="20"
+            height="20"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            strokeWidth="2"
+            strokeWidth="2.5"
             strokeLinecap="round"
             strokeLinejoin="round"
           >
             <polyline points="15 18 9 12 15 6" />
           </svg>
         </button>
-        <button onClick={scrollNext} className="carousel-btn" aria-label="Next" type="button">
+        <button onClick={scrollNext} className="carousel-btn carousel-next" aria-label="Next" type="button">
           <svg
-            width="24"
-            height="24"
+            width="20"
+            height="20"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            strokeWidth="2"
+            strokeWidth="2.5"
             strokeLinecap="round"
             strokeLinejoin="round"
           >
@@ -261,8 +260,22 @@ function ImageCarousel() {
           </svg>
         </button>
         <a href="/gallery" className="carousel-gallery-btn" aria-label="View Gallery">
+          <span className="btn-icon-circle">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="7" y1="17" x2="17" y2="7" />
+              <polyline points="7 7 17 7 17 17" />
+            </svg>
+          </span>
           <span>Gallery</span>
-          <Arrow />
         </a>
       </div>
     </div>
