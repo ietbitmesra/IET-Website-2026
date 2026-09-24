@@ -8,6 +8,7 @@ import TimelineSection from '../components/TimelineSection';
 import AchievementsSection from '../components/AchievementsSection';
 import TechLinesHud from '../components/TechLinesHud';
 import MatrixRain from '../components/MatrixRain';
+import TuxMascot from '../components/TuxMascot';
 // import CircularHud from '../components/CircularHud';
 
 function StandalonePage({ path }) {
@@ -153,9 +154,7 @@ function StandalonePage({ path }) {
                     <cite className="quote-author">LINUS TORVALDS</cite>
                   </blockquote>
                 </div>
-                <div className="tux-backdrop-wrapper" aria-hidden="true">
-                  <img src="/tux-outline.svg" alt="" className="tux-backdrop-img" />
-                </div>
+                <TuxMascot />
               </div>
               <AchievementsSection />
               <SocialsSection />

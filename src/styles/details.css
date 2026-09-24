@@ -1425,12 +1425,122 @@
   z-index: 3;
 }
 
+.tux-clickable {
+  cursor: pointer;
+  pointer-events: auto !important;
+}
+
+.tux-head-emoji {
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  user-select: none;
+  z-index: 10;
+  color: #a78bfa;
+  animation:
+    tux-pop-bounce 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards,
+    tux-gentle-float 2s ease-in-out infinite alternate 0.45s;
+}
+
+.tux-emoji-glyph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #a78bfa;
+  filter: drop-shadow(0 0 10px rgba(167, 139, 250, 0.75));
+}
+
+.tux-emoji-glyph svg {
+  display: block;
+}
+
+.tux-head-emoji.is-leaving {
+  animation: tux-fade-out 0.4s ease forwards;
+}
+
+@keyframes tux-fade-out {
+  0% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(6px) scale(0.5);
+  }
+}
+
+@keyframes tux-pop-bounce {
+  0% {
+    transform: translateX(-50%) translateY(14px) scale(0);
+    opacity: 0;
+  }
+
+  70% {
+    transform: translateX(-50%) translateY(-5px) scale(1.25);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(-50%) translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes tux-gentle-float {
+  0% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  100% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+
+.tux-floating-particle {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  color: #c4b5fd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  user-select: none;
+  z-index: 11;
+  filter: drop-shadow(0 0 8px rgba(167, 139, 250, 0.65));
+  animation: tux-float-up 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.tux-floating-particle svg {
+  width: 14px;
+  height: 14px;
+  display: block;
+}
+
+@keyframes tux-float-up {
+  0% {
+    transform: translate(calc(-50% + var(--particle-offset, 0px)), 0) scale(0.6);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(calc(-50% + var(--particle-offset, 0px)), -55px) scale(1.05);
+    opacity: 0;
+  }
+}
+
 .tux-backdrop-img {
   width: 170px;
   height: auto;
   opacity: 0.48;
   filter: drop-shadow(0 0 16px rgba(139, 92, 246, 0.22));
-  transition: opacity 1.8s ease, transform 1.8s ease;
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 @media (max-width: 768px) {
