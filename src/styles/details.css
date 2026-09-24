@@ -1274,6 +1274,37 @@
   overflow: hidden;
 }
 
+.quote-matrix-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    100px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(167, 139, 250, 0.11) 0%,
+    rgba(167, 139, 250, 0.05) 35%,
+    rgba(139, 92, 246, 0.012) 65%,
+    transparent 100%
+  );
+  -webkit-mask-image:
+    radial-gradient(ellipse min(480px, 65vw) 500px at 50% 48%, transparent 30%, black 78%),
+    linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%),
+    linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    radial-gradient(ellipse min(480px, 65vw) 500px at 50% 48%, transparent 30%, black 78%),
+    linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%),
+    linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  mask-composite: intersect;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.quote-matrix-wrapper:hover::after {
+  opacity: 1;
+}
+
 .matrix-rain-wrapper {
   position: absolute;
   inset: 0;

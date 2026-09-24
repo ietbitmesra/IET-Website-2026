@@ -139,7 +139,10 @@ function StandalonePage({ path }) {
               {/* <CircularHud /> */}
               <ImageCarousel />
               <TimelineSection />
-              <div className="quote-matrix-wrapper section-reveal">
+              <div
+                className="quote-matrix-wrapper section-reveal"
+                onMouseMove={handleSpotlight}
+              >
                 <MatrixRain />
                 <div className="quote-section container">
                   <blockquote className="quote-block">
