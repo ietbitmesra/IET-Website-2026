@@ -35,6 +35,31 @@ function MatrixRain({
     let width = 0;
     let height = 0;
     let rainDrops = [];
+    let mascotBox = null;
+
+    const updateMascotBox = () => {
+      const tuxEl =
+        container.parentElement?.querySelector('.tux-backdrop-img') ||
+        container.parentElement?.querySelector('.tux-backdrop-wrapper');
+
+      if (tuxEl) {
+        const cRect = container.getBoundingClientRect();
+        const tRect = tuxEl.getBoundingClientRect();
+        mascotBox = {
+          left: tRect.left - cRect.left - 20,
+          right: tRect.right - cRect.left + 20,
+          top: tRect.top - cRect.top - 15,
+          bottom: tRect.bottom - cRect.top + 15,
+        };
+      } else {
+        mascotBox = {
+          left: width / 2 - 110,
+          right: width / 2 + 110,
+          top: 0,
+          bottom: height,
+        };
+      }
+    };
 
     const setupCanvas = () => {
       const rect = container.getBoundingClientRect();
@@ -47,7 +72,6 @@ function MatrixRain({
       canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;
 
-      // Set transform for DPI
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       // Pre-fill full canvas background cleanly
@@ -57,17 +81,30 @@ function MatrixRain({
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       ctx.restore();
 
+      updateMascotBox();
+
       const numCols = Math.floor(width / colSpacing);
       const prevDrops = [...rainDrops];
       rainDrops = new Array(numCols);
 
       const maxRows = Math.ceil(height / fontSize);
       for (let i = 0; i < numCols; i++) {
-        if (i < prevDrops.length && prevDrops[i] !== undefined) {
+        const xPos = i * colSpacing + Math.floor((colSpacing - fontSize) / 2);
+        const isOverMascot =
+          mascotBox && xPos >= mascotBox.left && xPos <= mascotBox.right;
+
+        if (isOverMascot) {
+          // Inactive column: completely exclude rain from columns that align with the mascot
+          rainDrops[i] = -9999;
+        } else if (
+          i < prevDrops.length &&
+          prevDrops[i] !== undefined &&
+          prevDrops[i] !== -9999
+        ) {
           rainDrops[i] = prevDrops[i];
         } else {
-          // Stagger starting positions with generous gaps for low density
-          rainDrops[i] = Math.floor(Math.random() * maxRows * 1.8) - Math.floor(maxRows * 0.8);
+          rainDrops[i] =
+            Math.floor(Math.random() * maxRows * 1.8) - Math.floor(maxRows * 0.8);
         }
       }
     };
@@ -100,9 +137,24 @@ function MatrixRain({
       ctx.font = `${fontSize}px "DM Mono", monospace, "Courier New"`;
 
       for (let i = 0; i < rainDrops.length; i++) {
+        // Skip columns in the mascot zone completely
+        if (rainDrops[i] === -9999) continue;
+
         const row = rainDrops[i];
         const xPos = i * colSpacing + Math.floor((colSpacing - fontSize) / 2);
         const yPos = row * fontSize;
+
+        // Additional safeguard: never draw within mascot bounds
+        if (
+          mascotBox &&
+          xPos >= mascotBox.left &&
+          xPos <= mascotBox.right &&
+          yPos >= mascotBox.top &&
+          yPos <= mascotBox.bottom
+        ) {
+          rainDrops[i]++;
+          continue;
+        }
 
         // Draw character only when on screen
         if (row >= 0 && yPos <= height + fontSize) {
@@ -119,7 +171,7 @@ function MatrixRain({
           ctx.fillText(headChar, xPos, yPos);
         }
 
-        // When drop passes below the bottom, pause before next descent for lower density
+        // When drop passes below the bottom, pause before next descent
         if (yPos > height) {
           if (yPos > height + 50 || Math.random() > 0.4) {
             rainDrops[i] = -Math.floor(15 + Math.random() * 45);

@@ -1290,13 +1290,14 @@
 .quote-matrix-wrapper .tux-backdrop-wrapper {
   margin-top: 55px;
   margin-bottom: 10px;
+  z-index: 3;
 }
 
 .tux-backdrop-img {
-  width: 160px;
+  width: 170px;
   height: auto;
-  opacity: 0.12;
-  filter: drop-shadow(0 0 18px rgba(139, 92, 246, 0.25));
+  opacity: 0.48;
+  filter: drop-shadow(0 0 16px rgba(139, 92, 246, 0.22));
   transition: opacity 1.8s ease, transform 1.8s ease;
 }
 
@@ -1305,9 +1306,10 @@
     margin-top: 60px;
     margin-bottom: -70px;
   }
+
   .tux-backdrop-img {
-    width: 120px;
-    opacity: 0.045;
+    width: 130px;
+    opacity: 0.42;
   }
 }
 
