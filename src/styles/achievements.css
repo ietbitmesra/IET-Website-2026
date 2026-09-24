@@ -99,24 +99,41 @@
 
 .achievement-box {
   position: relative;
-  border: 1px solid rgba(139, 92, 246, 0.16);
+  border: 1px solid rgba(139, 92, 246, 0.2);
   border-radius: 14px;
   overflow: hidden;
   aspect-ratio: 3 / 4;
   text-align: left;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
   cursor: pointer;
-  transform: translateZ(0);
-  -webkit-mask-image: -webkit-radial-gradient(white, black);
-  mask-image: radial-gradient(white, black);
+  transform: translateY(0);
   isolation: isolate;
   background-color: var(--surface);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease,
+    opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .achievement-box:hover {
-  border-color: rgba(139, 92, 246, 0.38);
-  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.5), 0 0 24px rgba(139, 92, 246, 0.12);
+  transform: translateY(-5px);
+  border-color: rgba(167, 139, 250, 0.75);
+  box-shadow:
+    0 0 0 1px rgba(167, 139, 250, 0.4),
+    0 0 25px rgba(139, 92, 246, 0.5),
+    0 0 55px rgba(139, 92, 246, 0.28),
+    0 0 90px rgba(167, 139, 250, 0.16),
+    0 22px 45px rgba(0, 0, 0, 0.6);
+  z-index: 5;
+}
+
+/* Dim and grayscale only other card boxes when an achievement card box is hovered */
+.achievements-grid:has(.achievement-box:hover) .achievement-box:not(:hover) {
+  opacity: 0.32;
+  filter: grayscale(1) brightness(0.7);
+  transform: scale(0.97);
 }
 
 .achievement-img {
