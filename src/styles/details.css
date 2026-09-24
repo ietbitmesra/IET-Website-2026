@@ -1164,8 +1164,8 @@
   position: relative;
   width: 100%;
   margin-top: 65px;
-  margin-bottom: 25px;
-  padding: 55px 0 25px;
+  margin-bottom: 10px;
+  padding: 55px 0 145px;
   isolation: isolate;
   display: flex;
   flex-direction: column;
@@ -1185,15 +1185,15 @@
   mask-image: linear-gradient(
     to bottom,
     transparent 0%,
-    black 12%,
-    black 72%,
+    black 10%,
+    black 90%,
     transparent 100%
   );
   -webkit-mask-image: linear-gradient(
     to bottom,
     transparent 0%,
-    black 12%,
-    black 72%,
+    black 10%,
+    black 90%,
     transparent 100%
   );
 }
