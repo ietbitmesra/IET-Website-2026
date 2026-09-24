@@ -183,6 +183,7 @@ main {
 }
 
 /* Quote and Tux backdrop load slow */
+.quote-matrix-wrapper.section-reveal,
 .quote-section.section-reveal,
 .tux-backdrop-wrapper.section-reveal {
   transition:

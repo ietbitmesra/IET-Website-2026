@@ -7,6 +7,7 @@ import SocialsSection from '../components/SocialsSection';
 import TimelineSection from '../components/TimelineSection';
 import AchievementsSection from '../components/AchievementsSection';
 import TechLinesHud from '../components/TechLinesHud';
+import MatrixRain from '../components/MatrixRain';
 // import CircularHud from '../components/CircularHud';
 
 function StandalonePage({ path }) {
@@ -118,17 +119,20 @@ function StandalonePage({ path }) {
               {/* <CircularHud /> */}
               <ImageCarousel />
               <TimelineSection />
-              <div className="quote-section container section-reveal">
-                <blockquote className="quote-block">
-                  <p className="quote-body">
-                    <span className="quote-line-white">"Talk is cheap,</span>
-                    <span className="quote-line-highlight">show me the code."</span>
-                  </p>
-                  <cite className="quote-author">LINUS TORVALDS</cite>
-                </blockquote>
-              </div>
-              <div className="tux-backdrop-wrapper section-reveal" aria-hidden="true">
-                <img src="/tux-outline.svg" alt="" className="tux-backdrop-img" />
+              <div className="quote-matrix-wrapper section-reveal">
+                <MatrixRain />
+                <div className="quote-section container">
+                  <blockquote className="quote-block">
+                    <p className="quote-body">
+                      <span className="quote-line-white">"Talk is cheap,</span>
+                      <span className="quote-line-highlight">show me the code."</span>
+                    </p>
+                    <cite className="quote-author">LINUS TORVALDS</cite>
+                  </blockquote>
+                </div>
+                <div className="tux-backdrop-wrapper" aria-hidden="true">
+                  <img src="/tux-outline.svg" alt="" className="tux-backdrop-img" />
+                </div>
               </div>
               <AchievementsSection />
               <SocialsSection />

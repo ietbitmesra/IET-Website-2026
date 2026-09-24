@@ -1159,21 +1159,75 @@
   }
 }
 
+/* Quote Matrix Area Wrapper */
+.quote-matrix-wrapper {
+  position: relative;
+  width: 100%;
+  margin-top: 65px;
+  margin-bottom: 25px;
+  padding: 55px 0 25px;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.matrix-rain-wrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.32;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 12%,
+    black 72%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 12%,
+    black 72%,
+    transparent 100%
+  );
+}
+
+.matrix-rain-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 /* Quote Section */
 .quote-section {
   margin: 110px auto 0;
   display: flex;
   justify-content: center;
   position: relative;
-  z-index: 2;
+  z-index: 3;
   padding: 0 4vw;
+}
+
+.quote-matrix-wrapper .quote-section {
+  margin: 0 auto;
 }
 
 .quote-block {
   margin: 0;
-  padding: 0;
+  padding: 20px 24px;
   border: none;
-  background: transparent;
+  background: radial-gradient(
+    ellipse 75% 75% at 50% 50%,
+    rgba(11, 13, 15, 0.78) 0%,
+    rgba(11, 13, 15, 0.35) 55%,
+    transparent 100%
+  );
   box-shadow: none;
   backdrop-filter: none;
   display: flex;
@@ -1187,18 +1241,19 @@
 .quote-section .quote-body {
   display: flex;
   flex-direction: column;
-  margin: 0 0 28px 0;
-  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0 0 28px;
+  font-family: Manrope, -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: clamp(36px, 6vw, 40px);
   font-weight: 500;
   line-height: 1.1;
   letter-spacing: -0.02em;
   max-width: none;
-  color: #ffffff;
+  color: #fff;
+  text-shadow: 0 0 24px rgba(11, 13, 15, 0.95), 0 2px 8px rgba(0, 0, 0, 0.9);
 }
 
 .quote-line-white {
-  color: #ffffff;
+  color: #fff;
 }
 
 .quote-line-highlight {
@@ -1216,6 +1271,7 @@
   text-transform: uppercase;
   color: #8e96a0;
   display: block;
+  text-shadow: 0 0 16px rgba(11, 13, 15, 0.95);
 }
 
 /* Tux Mascot Backdrop in gap */
@@ -1226,16 +1282,21 @@
   align-items: center;
   margin-top: 100px;
   margin-bottom: -110px;
-  z-index: 1;
+  z-index: 2;
   pointer-events: none;
   user-select: none;
+}
+
+.quote-matrix-wrapper .tux-backdrop-wrapper {
+  margin-top: 55px;
+  margin-bottom: 10px;
 }
 
 .tux-backdrop-img {
   width: 160px;
   height: auto;
-  opacity: 0.055;
-  filter: drop-shadow(0 0 18px rgba(139, 92, 246, 0.2));
+  opacity: 0.12;
+  filter: drop-shadow(0 0 18px rgba(139, 92, 246, 0.25));
   transition: opacity 1.8s ease, transform 1.8s ease;
 }
 
