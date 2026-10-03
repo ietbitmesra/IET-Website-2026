@@ -1,6 +1,6 @@
 import { pastEvents } from '../data/events';
 
-function PastEvents({ splitWorkshops = false, onLearnMore }) {
+function PastEvents({ splitWorkshops = false, onLearnMore, landing = false }) {
   const renderPoster = (event, index) => (
     <div className={`poster-art poster-${event.theme || 'placeholder'}`}>
       {event.image ? (
@@ -61,7 +61,7 @@ function PastEvents({ splitWorkshops = false, onLearnMore }) {
   );
 
   const renderArchive = (items, label, title, count) => (
-    <section className="past-events">
+    <section className={`past-events${landing ? ' landing-past-events' : ''}`}>
       <div className="past-events-head">
         <div>
           <span className="kicker">ARCHIVE / {label}</span>

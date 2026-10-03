@@ -11,7 +11,9 @@ function Leaderboard() {
             <br />
             <em>pressure.</em>
           </h2>
-          <p className="muted">The people putting in the reps. Snapshot synced 2h ago.</p>
+          <p className="muted scroll-paragraph-reveal">
+            The people putting in the reps. Snapshot synced 2h ago.
+          </p>
           <a className="text-link" href="#community">
             See leaderboard <Arrow />
           </a>

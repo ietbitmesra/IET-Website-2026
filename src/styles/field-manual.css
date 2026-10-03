@@ -9,11 +9,9 @@ body {
   font-family: Manrope, Arial, sans-serif;
 }
 .nav {
-  height: 64px;
-  background: rgba(8, 10, 12, 0.72);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  height: 92px;
+  background: #080a0c;
+  border-bottom: 1px solid #30363a;
 }
 .nav-inner {
   max-width: none;
@@ -25,9 +23,8 @@ body {
   color: #596166;
 }
 .logo img {
-  width: auto;
-  height: 36px;
-  max-width: 108px;
+  width: 126px;
+  height: 50px;
   mix-blend-mode: screen;
 }
 .nav-cta {
@@ -141,11 +138,29 @@ nav a.active:not(.nav-cta)::after {
   position: relative;
   overflow: hidden;
 }
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: calc(0.18 - var(--hero-progress, 0) * 0.12);
+  background: linear-gradient(
+    180deg,
+    rgba(155, 92, 255, 0.12),
+    transparent 42%,
+    rgba(8, 10, 12, 0.8)
+  );
+  transform: translateY(calc(var(--hero-progress, 0) * -24px));
+  transition: opacity 0.2s linear;
+}
 .hero-copy {
-  padding: 17vh 4vw 11vh 0;
+  padding: 11vh 4vw 8vh 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  transform: translate3d(0, calc(var(--hero-progress, 0) * -22px), 0);
+  opacity: calc(1 - var(--hero-progress, 0) * 0.35);
+  transition: transform 0.12s linear, opacity 0.12s linear;
 }
 .hero-copy::before {
   left: -1px;
@@ -156,12 +171,16 @@ nav a.active:not(.nav-cta)::after {
   color: #8d979c;
 }
 .hero h1 {
-  font-size: clamp(61px, 8.5vw, 138px);
+  font-size: clamp(54px, 7.8vw, 118px);
   line-height: 0.86;
   letter-spacing: -0.1em;
   text-transform: uppercase;
-  margin: 35px 0 38px;
+  margin: 26px 0 28px;
   max-width: 900px;
+}
+.hero-word {
+  display: inline-block;
+  will-change: transform, opacity;
 }
 .hero h1 em {
   color: transparent;
@@ -175,20 +194,21 @@ nav a.active:not(.nav-cta)::after {
   mix-blend-mode: screen;
 }
 .hero-text {
-  font-size: 15px;
+  font-size: 14px;
+  line-height: 1.55;
   border-left: 2px solid var(--lime);
-  padding-left: 17px;
+  padding: 0 18px 0 17px;
   max-width: 370px;
 }
 .hero-actions {
-  margin-top: 42px;
+  margin-top: 30px;
 }
 .hero-art {
   height: auto;
   margin: 7vh 0;
   border: 0;
   border-left: 1px solid #394146;
-  background-color: #111619;
+  background-color: var(--bg);
   background-image:
     linear-gradient(45deg, transparent 49.7%, rgba(139, 92, 246, 0.14) 50%, transparent 50.3%),
     linear-gradient(-45deg, transparent 49.7%, rgba(139, 92, 246, 0.08) 50%, transparent 50.3%);
@@ -196,6 +216,9 @@ nav a.active:not(.nav-cta)::after {
     100% 100%,
     100% 100%;
   box-shadow: none;
+  transform: translate3d(0, calc(var(--parallax, 0px)), 0) scale(var(--art-scale, 1));
+  transform-origin: center center;
+  transition: transform 0.12s linear;
 }
 .hero-art::before {
   background: radial-gradient(
@@ -217,6 +240,25 @@ nav a.active:not(.nav-cta)::after {
   border-radius: 0;
   transform: rotate(45deg);
   box-shadow: none;
+}
+.hero-identity {
+  padding: 7% 10% 9%;
+}
+.hero-identity-image {
+  display: block;
+  width: min(100%, 500px);
+  height: auto;
+  max-height: 86%;
+  object-fit: contain;
+  transform: translateY(-4%);
+}
+@media (max-width: 1100px) and (min-width: 761px) {
+  .hero-identity {
+    padding: 6% 7% 8%;
+  }
+  .hero-identity-image {
+    width: min(100%, 420px);
+  }
 }
 .grid-label {
   font-size: 9px;
@@ -389,7 +431,7 @@ footer {
 }
 @media (max-width: 760px) {
   .nav {
-    height: 56px;
+    height: 76px;
   }
   .nav-inner {
     padding: 0 20px;
@@ -398,16 +440,12 @@ footer {
     left: 20px;
     bottom: -16px;
   }
-  .logo img {
-    width: auto;
-    height: 30px;
-    max-width: 90px;
-  }
   nav {
-    top: 56px;
-    background: rgba(8, 10, 12, 0.94);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    top: 60px;
+  }
+  .logo img {
+    width: 106px;
+    height: 42px;
   }
   .hero {
     display: block;
@@ -415,17 +453,37 @@ footer {
     padding: 0 20px;
   }
   .hero-copy {
-    padding: 110px 0 80px;
+    padding: 64px 0 48px;
   }
   .hero h1 {
-    font-size: 58px;
+    font-size: 48px;
     line-height: 0.9;
-    margin: 28px 0 30px;
+    margin: 22px 0 24px;
+  }
+  .hero-text {
+    max-width: 330px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .hero-actions {
+    margin-top: 26px;
   }
   .hero-art {
     height: 340px;
     margin: 0 0 35px;
     border: 1px solid #394146;
+    padding-bottom: 18px;
+  }
+  .hero-identity {
+    padding: 9% 12% 13%;
+  }
+  .hero-identity-image {
+    width: min(100%, 340px);
+    max-height: 100%;
+    transform: translateY(-3%);
+  }
+  .hero-text {
+    padding-right: 10px;
   }
   .stats {
     height: auto;
@@ -513,7 +571,8 @@ footer {
   }
 }
 .hero-art {
-  transform: translateY(var(--parallax, 0px));
+  transform: translate3d(0, var(--parallax, 0px), 0) scale(var(--art-scale, 1));
+  transform-origin: center center;
   transition: transform 0.12s linear;
 }
 .scroll-reveal {
@@ -524,6 +583,27 @@ footer {
     transform 0.8s cubic-bezier(0.2, 0.75, 0.25, 1);
 }
 .scroll-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+.scroll-paragraph-reveal {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+  transition:
+    opacity 0.75s ease 0.12s,
+    transform 0.75s cubic-bezier(0.2, 0.75, 0.25, 1) 0.12s;
+  will-change: opacity, transform;
+}
+.scroll-paragraph-reveal[data-reveal-motion='left'] {
+  transform: translate3d(-28px, 0, 0);
+}
+.scroll-paragraph-reveal[data-reveal-motion='right'] {
+  transform: translate3d(28px, 0, 0);
+}
+.scroll-paragraph-reveal[data-reveal-motion='scale'] {
+  transform: scale(0.96);
+}
+.scroll-paragraph-reveal.is-visible {
   opacity: 1;
   transform: none;
 }
@@ -541,6 +621,18 @@ footer {
   .scroll-reveal {
     transform: translateY(20px);
   }
+  .scroll-paragraph-reveal {
+    transform: translate3d(0, 16px, 0);
+  }
+  .scroll-paragraph-reveal[data-reveal-motion='left'] {
+    transform: translate3d(-16px, 0, 0);
+  }
+  .scroll-paragraph-reveal[data-reveal-motion='right'] {
+    transform: translate3d(16px, 0, 0);
+  }
+  .scroll-paragraph-reveal[data-reveal-motion='scale'] {
+    transform: scale(0.98);
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .scroll-progress {
@@ -552,7 +644,18 @@ footer {
   .hero-art {
     transform: none;
   }
+  .hero-copy,
+  .hero::before {
+    transform: none;
+    opacity: 1;
+    transition: none;
+  }
   .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .scroll-paragraph-reveal {
     opacity: 1;
     transform: none;
     transition: none;

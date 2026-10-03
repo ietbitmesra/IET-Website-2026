@@ -13,6 +13,7 @@ function Navbar({ menuOpen, setMenuOpen }) {
             ['Resources', '/resources'],
             ['Projects', '/projects'],
             ['Community', '/community'],
+            ['Team', '/team'],
           ].map(([x, h]) => (
             <a key={x} href={h} onClick={() => setMenuOpen(false)}>
               {x}
