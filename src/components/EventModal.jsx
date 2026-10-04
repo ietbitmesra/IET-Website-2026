@@ -68,21 +68,34 @@ function EventModal({ event, onClose }) {
         <div className="dialog-type">{event.type}</div>
         <h2 id="event-dialog-title">{event.title}</h2>
         <p className="dialog-summary">
-          {event.summary || 'The full event brief will be added here with more information about this IET event.'}
+          {event.summary ||
+            'The full event brief will be added here with more information about this IET event.'}
         </p>
         <div className="dialog-meta">
-          <div><span>When</span><strong>{event.date || event.detail}</strong></div>
-          <div><span>Where</span><strong>{event.location || 'IET / BIT MESRA'}</strong></div>
-          <div><span>Format</span><strong>{event.format || event.type}</strong></div>
+          <div>
+            <span>When</span>
+            <strong>{event.date || event.detail}</strong>
+          </div>
+          <div>
+            <span>Where</span>
+            <strong>{event.location || 'IET / BIT MESRA'}</strong>
+          </div>
+          <div>
+            <span>Format</span>
+            <strong>{event.format || event.type}</strong>
+          </div>
         </div>
         <div className="dialog-section">
           <span className="kicker">CURRENTLY PLANNED</span>
           <ul>
-            {(event.details || [event.detail]).map((detail) => <li key={detail}>{detail}</li>)}
+            {(event.details || [event.detail]).map((detail) => (
+              <li key={detail}>{detail}</li>
+            ))}
           </ul>
         </div>
         <button className="button primary dialog-action" type="button" onClick={onClose}>
-          {event.action ? event.action.replace(' ↗', '') : 'Close details'} <span aria-hidden="true">↗</span>
+          {event.action ? event.action.replace(' ↗', '') : 'Close details'}{' '}
+          <span aria-hidden="true">↗</span>
         </button>
       </div>
     </div>

@@ -2,7 +2,7 @@ import Arrow from './Arrow';
 
 function Leaderboard() {
   return (
-    <section className="section activity">
+    <section className="section activity section-reveal">
       <div className="container activity-inner">
         <div>
           <span className="kicker">03 / CODING · LIVE</span>

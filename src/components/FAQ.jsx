@@ -7,7 +7,7 @@ function FAQ({ openFaq, setOpenFaq }) {
   ];
 
   return (
-    <section className="section container faq" id="community">
+    <section className="section container faq section-reveal" id="community">
       <div>
         <span className="kicker">06 / FAQ</span>
         <h2>

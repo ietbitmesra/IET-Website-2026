@@ -22,7 +22,7 @@ function Footer() {
           <div>
             <small>CONNECT</small>
             <a href="#top">GitHub</a>
-            <a href="#top">LinkedIn</a>
+            <a href="https://www.linkedin.com/company/iet-on-campus-bit-mesra/posts/">LinkedIn</a>
             <a href="mailto:hello@ietclub.in">Email us</a>
           </div>
         </div>

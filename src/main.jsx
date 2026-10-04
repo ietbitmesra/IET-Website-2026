@@ -29,6 +29,31 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState(null);
   const [path, setPath] = useState(window.location.pathname);
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const lenis = new Lenis({
+      duration: 1.6,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      wheelMultiplier: 0.8,
+      touchMultiplier: 1.2,
+    });
+
+    let rafId;
+    function raf(time) {
+      lenis.raf(time);
+      rafId = requestAnimationFrame(raf);
+    }
+    rafId = requestAnimationFrame(raf);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      lenis.destroy();
+    };
+  }, []);
+
   useEffect(() => {
     let frame = 0;
     const updateScrollState = () => {
@@ -72,16 +97,18 @@ function App() {
     const links = document.querySelectorAll('a[href^="/"]');
     const handleClick = (e) => {
       const href = e.currentTarget.getAttribute('href');
-      if (href === '/') return;
+      if (!href || href.startsWith('/#')) return;
       e.preventDefault();
       window.history.pushState({}, '', href);
       setPath(href);
+      setMenuOpen(false);
       window.scrollTo(0, 0);
     };
     links.forEach((link) => link.addEventListener('click', handleClick));
     return () => links.forEach((link) => link.removeEventListener('click', handleClick));
   }, [path]);
   useEffect(() => {
+
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const smallScreen = window.matchMedia('(max-width: 760px)').matches;
     let lenis = null;
@@ -203,13 +230,33 @@ function App() {
     );
     items.forEach((item) => observer.observe(item));
     return () => observer.disconnect();
+
+    const timer = setTimeout(() => {
+      const items = document.querySelectorAll('.reveal-on-scroll, .scroll-reveal, .section-reveal');
+      const observer = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+            } else {
+              entry.target.classList.remove('is-visible');
+            }
+          }),
+        { threshold: 0.05, rootMargin: '0px 0px -20px 0px' },
+      );
+      items.forEach((item) => observer.observe(item));
+      return () => observer.disconnect();
+    }, 60);
+
+    return () => clearTimeout(timer);
+
   }, [path]);
   if (path === '/team') return <TeamPage />;
   if (path !== '/') return <StandalonePage path={path} />;
   return (
     <div id="top">
       <div className="scroll-progress" aria-hidden="true"></div>
-      <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} currentPath={path} />
       <main>
         <Hero />
         <StatsStrip />
@@ -219,7 +266,7 @@ function App() {
           <PastEvents landing />
         </section>
         <Leaderboard />
-        <section className="section container" id="resources">
+        <section className="section container section-reveal" id="resources">
           <div className="section-head">
             <div>
               <span className="kicker">04 / RESOURCE VAULT</span>
