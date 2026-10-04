@@ -20,10 +20,9 @@ function About() {
           <em>engineer a better world.</em>
         </h2>
         <p>
-          We are the IET and we inspire, inform and influence the global engineering community to
-          engineer a better world. As a diverse home across engineering and technology, we share
-          knowledge that helps make better sense of the world in order to solve the challenges that
-          matter. It’s why we are uniquely placed to champion engineering.
+          IET is a student-led engineering community that turns curiosity into consistent
+          practice. Through code, conversations and collaboration, we make space for technical
+          excellence to grow.
         </p>
         <a className="button outline" href="/about">
           Our story <Arrow />

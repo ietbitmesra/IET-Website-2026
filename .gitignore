@@ -4,6 +4,9 @@ node_modules/
 # Production build output
 dist/
 
+# Public assets
+/public/
+
 # Local environment files
 .env
 .env.*

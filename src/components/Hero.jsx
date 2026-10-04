@@ -23,11 +23,16 @@ function Hero() {
           <span className="year">2026</span>
         </div>
         <h1 className="reveal-title">
-          Engineering minds.
+          <span className="hero-word">Engineering</span>{' '}
+          <span className="hero-word">minds.</span>
           <br />
-          <em>Building</em> what's next.
+          <em>
+            <span className="hero-word">Building</span>
+          </em>{' '}
+          <span className="hero-word">what's</span>{' '}
+          <span className="hero-word">next.</span>
         </h1>
-        <p className="hero-text">
+        <p className="hero-text scroll-paragraph-reveal">
           A student-led engineering community for people who learn by building, competing and
           collaborating.
         </p>
@@ -53,16 +58,11 @@ function Hero() {
           <span>23.3441° N&nbsp;&nbsp;85.3096° E</span>
         </div>
         <div className="hero-identity">
-          <span className="identity-overline">EST. 2019 / BIT MESRA</span>
-          <strong>IET</strong>
-          <span className="identity-caption">
-            ENGINEERING
-            <br />
-            INNOVATION
-            <br />
-            TOGETHER
-          </span>
-          <i></i>
+          <img
+            className="hero-identity-image"
+            src="/iet-bit-mesra.svg"
+            alt="IET Bit Mesra"
+          />
         </div>
         <div className="diagram">
           <div className="node n1"></div>

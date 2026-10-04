@@ -9,7 +9,7 @@ function FAQ({ openFaq, setOpenFaq }) {
   return (
     <section className="section container faq section-reveal" id="community">
       <div>
-        <span className="kicker">07 / FAQ</span>
+        <span className="kicker">06 / FAQ</span>
         <h2>
           Good questions
           <br />
@@ -25,7 +25,7 @@ function FAQ({ openFaq, setOpenFaq }) {
               <b>{openFaq === i ? '−' : '+'}</b>
             </button>
             {openFaq === i && (
-              <p>
+              <p className="scroll-paragraph-reveal">
                 We welcome students from every year and background. Follow our events and
                 recruitment announcements to find your way in.
               </p>

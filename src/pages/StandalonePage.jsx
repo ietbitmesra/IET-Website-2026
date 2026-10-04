@@ -28,7 +28,31 @@ function StandalonePage({ path }) {
 
   return (
     <>
-      <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} currentPath={path} />
+      <header className="nav">
+        <div className="nav-inner">
+          <Logo />
+          <nav className="open">
+            {[
+              ['About', '/about'],
+              ['Events', '/events'],
+              ['Resources', '/resources'],
+              ['Projects', '/projects'],
+              ['Community', '/community'],
+              ['Team', '/team'],
+            ].map(([x, h]) => (
+              <a key={x} className={path === h ? 'active' : ''} href={h}>
+                {x}
+              </a>
+            ))}
+            <a className="nav-cta" href="/join">
+              Join IET <Arrow />
+            </a>
+          </nav>
+          <a className="mobile-back" href="/">
+            Home
+          </a>
+        </div>
+      </header>
       <main>
         <section className={`page-hero container ${path === '/about' ? 'page-hero-about' : ''}`}>
           <div className="page-hero-content">

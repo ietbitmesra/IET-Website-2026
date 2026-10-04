@@ -20,6 +20,7 @@ function Navbar({ menuOpen, setMenuOpen, currentPath = '' }) {
             ['Resources', '/resources'],
             ['Projects', '/projects'],
             ['Community', '/community'],
+            ['Team', '/team'],
           ].map(([x, h]) => (
             <a
               key={x}
