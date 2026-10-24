@@ -10,14 +10,11 @@ function GalleryPage() {
     <>
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} currentPath="/gallery" />
       <main>
-        <section className="page-hero container">
+        <section className="page-hero gallery-hero container">
           <div className="page-hero-content">
             <span className="kicker">IET / GALLERY</span>
-            <h1>
-              Moments that
-              <br />
-              <em>bring us together.</em>
-            </h1>
+            <h1>GALLERY<span className="gallery-hero-period">.</span></h1>
+            <p className="gallery-hero-tagline">Moments that <em>bring us together.</em></p>
             <p>
               A look at the people, ideas and experiences shaping engineering at IET BIT Mesra.
               Select an image to see it up close.
