@@ -1,83 +1,70 @@
+import { useEffect, useState } from 'react';
 import Arrow from '../../../components/Arrow';
+
 const ietLogo = '/assets/shared/iet-bit-mesra.svg';
 
+const heroQuotes = [
+  'Build boldly.',
+  'Learn by doing.',
+  'Code. Create.',
+  'Make it real.',
+];
+
 function Hero() {
-  const spotlight = (e) => {
-    const r = e.currentTarget.getBoundingClientRect();
-    e.currentTarget.style.setProperty('--mx', `${e.clientX - r.left}px`);
-    e.currentTarget.style.setProperty('--my', `${e.clientY - r.top}px`);
-    e.currentTarget.style.setProperty(
-      '--identity-x',
-      `${Math.max(-8, Math.min(8, ((e.clientX - r.left - r.width / 2) / r.width) * 16))}px`,
-    );
-    e.currentTarget.style.setProperty(
-      '--identity-y',
-      `${Math.max(-8, Math.min(8, ((e.clientY - r.top - r.height / 2) / r.height) * 16))}px`,
-    );
-  };
+  const [reducedMotion] = useState(() =>
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+  );
+  const [quoteIndex, setQuoteIndex] = useState(0);
+  const [characterCount, setCharacterCount] = useState(
+    reducedMotion ? heroQuotes[0].length : 0,
+  );
+  const [isDeleting, setIsDeleting] = useState(false);
+  const quote = heroQuotes[quoteIndex];
+
+  useEffect(() => {
+    if (reducedMotion) return undefined;
+
+    const isQuoteComplete = !isDeleting && characterCount === quote.length;
+    const isQuoteEmpty = isDeleting && characterCount === 0;
+    const delay = isQuoteComplete ? 2400 : isQuoteEmpty ? 500 : isDeleting ? 55 : 110;
+
+    const timeout = window.setTimeout(() => {
+      if (isQuoteComplete) {
+        setIsDeleting(true);
+      } else if (isQuoteEmpty) {
+        setIsDeleting(false);
+        setQuoteIndex((index) => (index + 1) % heroQuotes.length);
+      } else {
+        setCharacterCount((count) => count + (isDeleting ? -1 : 1));
+      }
+    }, delay);
+
+    return () => window.clearTimeout(timeout);
+  }, [characterCount, isDeleting, quote, reducedMotion]);
 
   return (
-    <section className="hero container">
+    <section className="hero container home-hero">
       <div className="hero-copy">
-        <div className="eyebrow">
-          <span className="pulse"></span>IET CLUB / DEVELOPER COMMUNITY{' '}
-          <span className="year">2026</span>
-        </div>
-        <h1 className="reveal-title">
-          <span className="hero-word">Engineering</span>{' '}
-          <span className="hero-word">minds.</span>
+        <img className="home-hero-mark" src={ietLogo} alt="IET Bit Mesra" />
+        <h1 className="reveal-title" aria-label="Learn together. Build boldly.">
+          <span className="hero-word">Learn together.</span>
           <br />
-          <em>
-            <span className="hero-word">Building</span>
-          </em>{' '}
-          <span className="hero-word">what's</span>{' '}
-          <span className="hero-word">next.</span>
+          <em className="hero-word home-hero-typing" aria-hidden="true">
+            {quote.slice(0, characterCount)}
+            <span className="home-hero-cursor"></span>
+          </em>
         </h1>
         <p className="hero-text scroll-paragraph-reveal">
-          A student-led engineering community for people who learn by building, competing and
-          collaborating.
+          A student-led technical society where BIT Mesra students explore technology through
+          hands-on workshops, coding contests, and collaborative projects.
         </p>
         <div className="hero-actions">
           <a className="button primary" href="#join">
-            Join the community <Arrow />
+            Join IET <Arrow />
           </a>
           <a className="text-link" href="#events">
-            Explore what we do <Arrow />
+            Explore our events <Arrow />
           </a>
-        </div>
-      </div>
-      <div
-        className="hero-art"
-        onMouseMove={spotlight}
-        aria-label="IET identity and developer network"
-      >
-        <div className="crosshair c1"></div>
-        <div className="crosshair c2"></div>
-        <div className="grid-label">
-          RANCHI / INDIA
-          <br />
-          <span>23.3441° N&nbsp;&nbsp;85.3096° E</span>
-        </div>
-        <div className="hero-identity">
-          <img
-            className="hero-identity-image"
-            src={ietLogo}
-            alt="IET Bit Mesra"
-          />
-        </div>
-        <div className="diagram">
-          <div className="node n1"></div>
-          <div className="node n2"></div>
-          <div className="node n3"></div>
-          <div className="node n4"></div>
-          <svg viewBox="0 0 400 340">
-            <path d="M55 250 L140 150 L220 190 L320 65 M140 150 L305 285 M220 190 L320 65" />
-          </svg>
-        </div>
-        <div className="art-caption">
-          01 / IDENTITY
-          <br />
-          <span>Curiosity into craft</span>
         </div>
       </div>
     </section>
