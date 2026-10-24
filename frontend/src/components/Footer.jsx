@@ -17,7 +17,7 @@ function Footer() {
             <a href="#about">About</a>
             <a href="#events">Events</a>
             <a href="/gallery">Gallery</a>
-            <a href="#join">Join IET</a>
+            <a href="/join">Join IET</a>
           </div>
           <div>
             <small>CONNECT</small>

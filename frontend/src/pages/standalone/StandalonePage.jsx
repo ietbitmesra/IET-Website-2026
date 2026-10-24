@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Arrow from '../../components/Arrow';
 import Navbar from '../../components/Navbar';
+import JoinIetPage from '../join/JoinIetPage';
 import { pageContent } from './data/pages';
 import ImageCarousel from '../about/components/ImageCarousel';
 import SocialsSection from '../about/components/SocialsSection';
@@ -13,6 +14,9 @@ const aboutHands = '/assets/about/about-hands.png';
 const aboutInitiatives = '/assets/about/about-initiatives.png';
 
 function StandalonePage({ path }) {
+  if (path === '/join') {
+    return <JoinIetPage />;
+  }
   const [menuOpen, setMenuOpen] = useState(false);
 
   const [label, title, desc] = pageContent[path] || pageContent['/about'];
