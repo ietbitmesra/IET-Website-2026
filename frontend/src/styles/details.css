@@ -1,21 +1,4 @@
-/* Signature IET details: measurement ticks, corner brackets and a timeline spine. */
-.section:not(.activity)::before {
-  content: '+';
-  position: absolute;
-  left: 5vw;
-  top: 128px;
-  color: var(--lime);
-  font: 14px 'DM Mono';
-}
-.section:not(.activity)::after {
-  content: '01  Ã¢â‚¬â€  04';
-  position: absolute;
-  right: 5vw;
-  top: 131px;
-  color: #4b555b;
-  font: 9px 'DM Mono';
-  letter-spacing: 0.14em;
-}
+/* Signature IET details: measurement ticks and a timeline spine. */
 .event-list {
   position: relative;
 }
@@ -79,44 +62,12 @@
 .leaderboard {
   position: relative;
 }
-.about-copy::after {
-  content: 'FIELD / 05';
-  position: absolute;
-  right: 0;
-  top: 0;
-  font: 9px 'DM Mono';
-  color: #4b555b;
-  letter-spacing: 0.12em;
-}
-.faq-list::after {
-  content: 'READ / ANSWER';
-  position: absolute;
-  right: 0;
-  top: -24px;
-  font: 8px 'DM Mono';
-  color: #4b555b;
-  letter-spacing: 0.14em;
-}
 @media (max-width: 760px) {
-  .section:not(.activity)::before {
-    left: 20px;
-    top: 83px;
-  }
-  .section:not(.activity)::after {
-    right: 20px;
-    top: 86px;
-  }
   .event-list::before {
     left: -10px;
   }
   .event::before {
     left: -13px;
-  }
-  .about-copy::after {
-    top: -20px;
-  }
-  .faq-list::after {
-    top: -22px;
   }
 }
 .toolchain {

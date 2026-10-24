@@ -103,15 +103,6 @@ body {
   position: relative;
   background: rgba(17, 20, 23, 0.72);
 }
-.stats::before {
-  content: 'MEASURED / NOT MARKETED';
-  position: absolute;
-  right: 0;
-  top: -20px;
-  font: 8px 'DM Mono';
-  letter-spacing: 0.14em;
-  color: var(--faint);
-}
 .stat {
   min-height: 58px;
 }
@@ -203,15 +194,6 @@ body {
   position: relative;
   overflow: hidden;
 }
-.join::before {
-  content: 'JOIN / 2026';
-  position: absolute;
-  right: 4%;
-  top: 25px;
-  font: 9px 'DM Mono';
-  letter-spacing: 0.18em;
-  color: rgba(17, 22, 0, 0.5);
-}
 .join-inner {
   padding-left: 12%;
 }
@@ -245,9 +227,6 @@ body {
   .hero-art {
     height: 320px;
   }
-  .stats::before {
-    display: none;
-  }
   .event-list,
   .resource-grid {
     margin-left: 0;
@@ -267,9 +246,6 @@ body {
   }
   .join-inner {
     padding-left: 20px;
-  }
-  .join::before {
-    right: 20px;
   }
   .faq-list {
     margin-top: 45px;

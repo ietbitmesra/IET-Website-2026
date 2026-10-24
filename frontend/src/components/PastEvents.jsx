@@ -204,7 +204,9 @@ function PastEvents({ splitWorkshops = false, onLearnMore, landing = false }) {
     );
   }
 
-  return renderArchive(pastEvents, 'PAST EVENTS', ["What we've", 'already built.'], '05');
+  const archiveTitle = landing ? ['Past', 'Events'] : ["What we've", 'already built.'];
+
+  return renderArchive(pastEvents, 'PAST EVENTS', archiveTitle, '05');
 }
 
 export default PastEvents;
