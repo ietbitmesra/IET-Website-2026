@@ -12,6 +12,7 @@ import GalleryPage from './pages/gallery/GalleryPage';
 import HomePage from './pages/home/HomePage';
 import StandalonePage from './pages/standalone/StandalonePage';
 import TeamPage from './pages/team/TeamPage';
+import JoinIetPage from './pages/join/JoinIetPage';
 
 const replacedPagePaths = new Set(['/resources', '/projects', '/community']);
 
@@ -90,10 +91,10 @@ function App() {
       lenis = smallScreen
         ? null
         : new Lenis({
-            duration: 1.2,
-            easing: (value) => Math.min(1, 1.001 - 2 ** (-10 * value)),
-            smoothWheel: true,
-          });
+          duration: 1.2,
+          easing: (value) => Math.min(1, 1.001 - 2 ** (-10 * value)),
+          smoothWheel: true,
+        });
       tick = (time) => {
         if (!lenis) return;
         const elapsed = time * 1000;
@@ -171,7 +172,7 @@ function App() {
     const timer = setTimeout(() => {
       const items = document.querySelectorAll(
         '.reveal-on-scroll, .scroll-reveal, .section-reveal, .scroll-paragraph-reveal, ' +
-          '.section-head, .about-copy > p, .join p, .faq-list, .activity-inner > div:first-child',
+        '.section-head, .about-copy > p, .join p, .faq-list, .activity-inner > div:first-child',
       );
       if (!items.length) return;
       if (!('IntersectionObserver' in window)) {
@@ -208,6 +209,7 @@ function App() {
   if (path === '/events') return <EventsPage />;
   if (path === '/team') return <TeamPage />;
   if (path === '/gallery') return <GalleryPage />;
+  if (path === '/join') return <JoinIetPage />;
   if (path !== '/') return <StandalonePage path={path} />;
   return <HomePage />;
 }
