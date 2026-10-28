@@ -14,10 +14,10 @@ const aboutHands = '/assets/about/about-hands.png';
 const aboutInitiatives = '/assets/about/about-initiatives.png';
 
 function StandalonePage({ path }) {
+  const [menuOpen, setMenuOpen] = useState(false);
   if (path === '/join') {
     return <JoinIetPage />;
   }
-  const [menuOpen, setMenuOpen] = useState(false);
 
   const [label, title, desc] = pageContent[path] || pageContent['/about'];
 
