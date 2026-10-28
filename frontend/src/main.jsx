@@ -13,6 +13,7 @@ import HomePage from './pages/home/HomePage';
 import StandalonePage from './pages/standalone/StandalonePage';
 import TeamPage from './pages/team/TeamPage';
 import JoinIetPage from './pages/join/JoinIetPage';
+import LoginPage from './pages/login/loginPage';
 
 const replacedPagePaths = new Set(['/resources', '/projects', '/community']);
 
@@ -210,6 +211,7 @@ function App() {
   if (path === '/team') return <TeamPage />;
   if (path === '/gallery') return <GalleryPage />;
   if (path === '/join') return <JoinIetPage />;
+  if (path === '/login') return <LoginPage />;
   if (path !== '/') return <StandalonePage path={path} />;
   return <HomePage />;
 }
