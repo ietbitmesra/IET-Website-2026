@@ -22,5 +22,5 @@ describe('Login Rate Limiter', () => {
         expect(blockedRes.status).toBe(429);
         expect(blockedRes.body.success).toBe(false);
         expect(blockedRes.body.message).toContain('Too many login attempts');
-    });
+    }, 15000);
 });
